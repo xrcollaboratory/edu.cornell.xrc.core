@@ -1,6 +1,6 @@
 {
     "name": "Common",
-    "rootNamespace": "",
+    "rootNamespace": "xrc.common",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
