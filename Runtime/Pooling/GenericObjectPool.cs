@@ -1,4 +1,4 @@
-﻿namespace XRC.Common.Pooling
+﻿namespace XRC.Core.Pooling
 {
     using System;
     using System.Collections.Generic;

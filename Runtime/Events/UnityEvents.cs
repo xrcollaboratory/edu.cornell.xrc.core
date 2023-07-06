@@ -1,5 +1,5 @@
 ﻿
-namespace XRC.Common.Events
+namespace XRC.Core.Events
 {
     using UnityEngine.Events;
 

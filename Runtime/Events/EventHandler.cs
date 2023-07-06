@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using XRC.Common.Pooling; 
+using XRC.Core.Pooling; 
 
-namespace XRC.Common.Events
+namespace XRC.Core.Events
 {
     /// <summary>
     /// Adds a generic event system. The event system allows objects to register, T2nregister, and execute events on a particular object.

@@ -1,8 +1,8 @@
 {
-	"name": "edu.cornell.xrc.common",
+	"name": "edu.cornell.xrc.core",
 	"version": "0.0.1",
-	"displayName": "XRC Common",
-	"description": "This repo contains a collection of common utilities to be used by XR Collaboratory.",
+	"displayName": "XRC Core",
+	"description": "This repo contains a collection of core utilities to be used by XR Collaboratory.",
 	"unity": "2021.3",
 	"unityRelease": "4f1",
 	"dependencies": {
@@ -16,7 +16,13 @@
 		"name": "XR Collaboratory",
 		"email": "sr2294@cornell.edu",
 		"url": "https://xr.cornell.edu/collaboratory"
-	}
+	},
 
-
+	"samples": [
+		{
+			"displayName": "PoseMarker",
+			"description": "Contains example usage of the PoseMarker component.",
+			"path": "Samples~/PoseMarker"
+		}
+	]
 }

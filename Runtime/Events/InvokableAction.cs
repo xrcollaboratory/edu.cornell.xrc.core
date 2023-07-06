@@ -2,7 +2,7 @@
 
 using System;
 
-namespace XRC.Common.Events
+namespace XRC.Core.Events
 {
     /// <summary>
     /// Base class which allows for the Action event system to be pooled.

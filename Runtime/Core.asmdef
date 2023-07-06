@@ -1,6 +1,6 @@
 {
-    "name": "Common",
-    "rootNamespace": "xrc.common",
+    "name": "Core",
+    "rootNamespace": "xrc.core",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

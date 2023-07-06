@@ -1,0 +1,219 @@
+using UnityEngine;
+
+public class PoseMarker : MonoBehaviour
+{
+    private Material m_BlueMaterial;
+    private Material m_DefaultMaterial;
+    private Material m_GreenMaterial;
+    private Material m_RedMaterial;
+
+    private GameObject m_XAxis;
+
+    private GameObject m_XPositive;
+    private GameObject m_YAxis;
+    private GameObject m_YPositive;
+    private GameObject m_ZAxis;
+    private GameObject m_ZPositive;
+
+  
+    
+    // private void OnEnable()
+    // {
+    //     PoseMarkerController.OnPoseMarkerEnabledChanged += HandlePoseMarkerEnabledChanged;
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     PoseMarkerController.OnPoseMarkerEnabledChanged -= HandlePoseMarkerEnabledChanged;
+    // }
+
+    private void HandlePoseMarkerEnabledChanged(bool isEnabled)
+    {
+        // Handle the pose marker enabled changed event
+        if (isEnabled)
+        {
+            Debug.Log("Pose marker is enabled!");
+            ShowPoseMarker();
+        }
+        else
+        {
+            Debug.Log("Pose marker is disabled!");
+            HidePoseMarker();
+        }
+    }
+    private void Start()
+    {
+        CreateMaterials();
+        CreatePoseMarker();
+        //HidePoseMarker(); 
+    }
+
+    public void ShowPoseMarker()
+    {
+        m_XAxis.GetComponent<MeshRenderer>().enabled = true;
+        m_YAxis.GetComponent<MeshRenderer>().enabled = true;
+        m_ZAxis.GetComponent<MeshRenderer>().enabled = true;
+
+        m_XPositive.GetComponent<MeshRenderer>().enabled = true;
+        m_YPositive.GetComponent<MeshRenderer>().enabled = true;
+        m_ZPositive.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+
+    public void HidePoseMarker()
+    {
+        m_XAxis.GetComponent<MeshRenderer>().enabled = false;
+        m_YAxis.GetComponent<MeshRenderer>().enabled = false;
+        m_ZAxis.GetComponent<MeshRenderer>().enabled = false;
+
+        m_XPositive.GetComponent<MeshRenderer>().enabled = false;
+        m_YPositive.GetComponent<MeshRenderer>().enabled = false;
+        m_ZPositive.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    private void CreatePoseMarker()
+    {
+        // Use the bounds of the renderer
+        var renderer = GetComponent<Renderer>();
+        var bounds = renderer.bounds;
+
+
+        var position = transform.position;
+        var rotation = transform.rotation;
+
+        var scaleFactorMax = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) * 1.0f;
+        var scaleFactorMin = Mathf.Min(bounds.size.x, bounds.size.y, bounds.size.z) * 1.0f;
+
+
+        var axisWidth = Mathf.Clamp(scaleFactorMin * 0.05f, 0.01f, 0.2f);
+        var indicatorWidth = 2 * axisWidth; //Mathf.Clamp(scaleFactorMin * 0.05f * 2.0f, 0.01f, 0.4f); 
+
+        m_XAxis = CreateCube(position, rotation, new Vector3(bounds.extents.x * 2.5f, axisWidth, axisWidth),
+            m_RedMaterial, "xAxis");
+        m_YAxis = CreateCube(position, rotation, new Vector3(axisWidth, bounds.extents.y * 2.5f, axisWidth),
+            m_GreenMaterial, "yAxis");
+        m_ZAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisWidth, bounds.extents.z * 2.5f),
+            m_BlueMaterial, "zAxis");
+
+
+        m_XPositive = CreateCube(position + Vector3.right * bounds.extents.x * 1.25f, rotation,
+            new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_RedMaterial, "X-Positive");
+        m_YPositive = CreateCube(position + Vector3.up * bounds.extents.y * 1.25f, rotation,
+            new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_GreenMaterial, "Y-Positive");
+        m_ZPositive = CreateCube(position + Vector3.forward * bounds.extents.z * 1.25f, rotation,
+            new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_BlueMaterial, "Z-Positive");
+
+
+        // After PoseMarker has been initialized, parent it to the game object.
+        m_XAxis.transform.SetParent(transform);
+        m_YAxis.transform.SetParent(transform);
+        m_ZAxis.transform.SetParent(transform);
+        m_XPositive.transform.SetParent(transform);
+        m_YPositive.transform.SetParent(transform);
+        m_ZPositive.transform.SetParent(transform);
+    }
+
+    private void CreateMaterials()
+    {
+        // Create red material
+        m_RedMaterial = new Material(Shader.Find("Standard"));
+        m_RedMaterial.color = Color.red;
+
+        // Create blue material
+        m_BlueMaterial = new Material(Shader.Find("Standard"));
+        m_BlueMaterial.color = Color.blue;
+
+        // Create green material
+        m_GreenMaterial = new Material(Shader.Find("Standard"));
+        m_GreenMaterial.color = Color.green;
+
+        m_DefaultMaterial = new Material(Shader.Find("Standard"));
+        m_DefaultMaterial.color = Color.white;
+    }
+
+    private GameObject CreateCube(Vector3 position, Quaternion rotation, Vector3 size, Material material,
+        string name = "cube")
+    {
+        var cube = new GameObject();
+        cube.name = name;
+        cube.AddComponent<MeshFilter>().mesh = CreateCubeMesh(size);
+        cube.AddComponent<MeshRenderer>();
+        cube.transform.position = position;
+
+        // Store the pivot transform and direction vectors.
+        var customPivot = transform;
+        var targetDirection = transform.forward;
+        var cubeDirection = cube.transform.forward;
+
+        // Apply the rotation to align the cube
+        var rot = Quaternion.FromToRotation(cubeDirection, targetDirection);
+        cube.transform.RotateAround(customPivot.position, transform.up, rot.eulerAngles.y);
+        var rend = cube.GetComponent<Renderer>();
+        rend.material = material;
+        return cube;
+    }
+
+
+    private Mesh CreateCubeMesh(Vector3 size)
+    {
+        var mesh = new Mesh();
+
+        // Vertices
+        var vertices = new Vector3[8];
+        var halfSizeX = size.x * 0.5f;
+        var halfSizeY = size.y * 0.5f;
+        var halfSizeZ = size.z * 0.5f;
+        vertices[0] = new Vector3(-halfSizeX, -halfSizeY, -halfSizeZ);
+        vertices[1] = new Vector3(halfSizeX, -halfSizeY, -halfSizeZ);
+        vertices[2] = new Vector3(halfSizeX, -halfSizeY, halfSizeZ);
+        vertices[3] = new Vector3(-halfSizeX, -halfSizeY, halfSizeZ);
+        vertices[4] = new Vector3(-halfSizeX, halfSizeY, -halfSizeZ);
+        vertices[5] = new Vector3(halfSizeX, halfSizeY, -halfSizeZ);
+        vertices[6] = new Vector3(halfSizeX, halfSizeY, halfSizeZ);
+        vertices[7] = new Vector3(-halfSizeX, halfSizeY, halfSizeZ);
+
+        // Triangles
+        var triangles = new int[36];
+        triangles[0] = 0;
+        triangles[1] = 4;
+        triangles[2] = 5;
+        triangles[3] = 0;
+        triangles[4] = 5;
+        triangles[5] = 1;
+        triangles[6] = 1;
+        triangles[7] = 5;
+        triangles[8] = 6;
+        triangles[9] = 1;
+        triangles[10] = 6;
+        triangles[11] = 2;
+        triangles[12] = 2;
+        triangles[13] = 6;
+        triangles[14] = 7;
+        triangles[15] = 2;
+        triangles[16] = 7;
+        triangles[17] = 3;
+        triangles[18] = 3;
+        triangles[19] = 7;
+        triangles[20] = 4;
+        triangles[21] = 3;
+        triangles[22] = 4;
+        triangles[23] = 0;
+        triangles[24] = 4;
+        triangles[25] = 7;
+        triangles[26] = 6;
+        triangles[27] = 4;
+        triangles[28] = 6;
+        triangles[29] = 5;
+        triangles[30] = 3;
+        triangles[31] = 0;
+        triangles[32] = 1;
+        triangles[33] = 3;
+        triangles[34] = 1;
+        triangles[35] = 2;
+
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+
+        return mesh;
+    }
+}
