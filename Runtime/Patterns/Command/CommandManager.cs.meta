@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4dd6874f5919f5341b4cd82640bdcd3c
+guid: a0e30935cc4c6554496c9de03d996e43
+labels:
+- Undo
+- Redo
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
