@@ -1,6 +1,6 @@
 {
     "name": "XRC.Core",
-    "rootNamespace": "xrc.core",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
