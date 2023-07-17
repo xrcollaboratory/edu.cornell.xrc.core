@@ -1,5 +1,5 @@
 {
-    "name": "Core",
+    "name": "XRC.Core",
     "rootNamespace": "xrc.core",
     "references": [],
     "includePlatforms": [],
