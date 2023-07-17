@@ -1,7 +1,19 @@
-# This .gitignore file should be placed at the root of your Unity project directory
-#
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
-#
+# This is a .gitignore file that can be used for both Unity projects and Unity packages
+# For Unity projects: Place this file at the root of your Unity project directory.
+# For Unity packages: Place this file at the root of your package directory.
+
+##########################
+### For Unity packages ###
+##########################
+# This ignores the Samples folder (without ~ sign) as it is only used as a link to Samples~
+# Note: If your Unity project for some reason contains a Samples folder in the root, then it will be ignored
+/Samples/
+
+##########################
+### For Unity projects ###
+##########################
+# The remainder of this file applies to Unity projects
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -9,8 +21,6 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-
-/Samples
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

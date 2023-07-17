@@ -3,18 +3,17 @@
 	"version": "0.0.1",
 	"displayName": "XRC Core",
 	"description": "This repo contains a collection of core utilities to be used by XR Collaboratory.",
-	"unity": "2021.3",
+	"unity": "2022.3",
 	"unityRelease": "4f1",
 	"dependencies": {
 	},
 	"keywords": [
 		"XRC",
-		"Tools",
-		"Utilities"
+		"XR Collaboratory"
 	],
 	"author": {
-		"name": "XR Collaboratory",
-		"email": "sr2294@cornell.edu",
+		"name": "YOUR NAME",
+		"email": "NETID@cornell.edu",
 		"url": "https://xr.cornell.edu/collaboratory"
 	},
 
