@@ -20,7 +20,7 @@
 	"samples": [
 		{
 			"displayName": "StarterAssets",
-			"description": ".",
+			"description": "A few sample assets to get you started.",
 			"path": "Samples~/StarterAssets"
 		}
 	]
