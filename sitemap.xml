@@ -1,80 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.CommandBase.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.CommandBase.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.CommandManager.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.CommandManager.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.ICommand.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.ICommand.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.MonoBehaviourSingleton-1.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.MonoBehaviourSingleton-1.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.MonoBehaviourSingletonPersistent-1.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.MonoBehaviourSingletonPersistent-1.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.PoseMarker.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.PoseMarker.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.StudentSubmissionSettings.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.StudentSubmissionSettings.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.UtilityOnDestroyHandler.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.UtilityOnDestroyHandler.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/api/XRC.Core.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/changelog/CHANGELOG.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/changelog/CHANGELOG.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/index.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/index.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/license/LICENSE.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/license/LICENSE.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xrcollaboratory.github.io/xrc-package-template/license/Third%20Party%20Notices.html</loc>
-    <lastmod>2023-07-17T08:13:35+00:00</lastmod>
+    <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/license/Third%20Party%20Notices.html</loc>
+    <lastmod>2023-07-17T08:26:25+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

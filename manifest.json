@@ -2,11 +2,11 @@
   "sitemap": {
     "fileOptions": {
       "api/*": {
-        "baseUrl": "https://xrcollaboratory.github.io/xrc-package-template/",
+        "baseUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
         "changefreq": "daily"
       }
     },
-    "baseUrl": "https://xrcollaboratory.github.io/xrc-package-template/",
+    "baseUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
     "changefreq": "weekly"
   },
   "homepages": [],
