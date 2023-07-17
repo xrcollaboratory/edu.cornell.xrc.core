@@ -1,4 +1,4 @@
-# Package Name
+# XRC Core
 
 ## Overview
 Provide a brief, high-level explanation of the package.
