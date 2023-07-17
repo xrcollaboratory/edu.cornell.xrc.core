@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Represents the settings for a student submission.
+/// </summary>
 [CreateAssetMenu(fileName = "StudentSubmissionSettings", menuName = "XRC/Submission Settings")]
-
 public class StudentSubmissionSettings : ScriptableObject
 {
     /// <summary>

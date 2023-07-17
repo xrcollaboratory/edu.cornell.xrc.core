@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace XRC.Core
 {
+	/// <summary>
+	/// Manages the execution, undo, and redo of commands in the application.
+	/// </summary>
 	public class CommandManager
 	{
 		private static CommandManager s_instance = null;
@@ -14,6 +17,11 @@ namespace XRC.Core
 
 		// Provided in Utils
 		private UtilityOnDestroyHandler m_sceneDestroyHandler = null;
+		
+		
+		/// <summary>
+		/// Gets or sets a value indicating whether the CommandManager is destroyed when a new scene is loaded.
+		/// </summary>
 		public bool IsDestroyedOnSceneLoad
 		{
 			get{ return m_sceneDestroyHandler != null; }
@@ -41,6 +49,10 @@ namespace XRC.Core
 		}
 
 		private long m_commandsStoredBytesLimit = 128*1024*1024; // default 128MB (mega byte)
+		
+		/// <summary>
+		/// Gets or sets the maximum amount of memory that can be used to store command data.
+		/// </summary>
 		public long StoredBytesLimit
 		{
 			get{ return m_commandsStoredBytesLimit; }
@@ -52,11 +64,28 @@ namespace XRC.Core
 		}
 
 		private long m_commandsStoredBytes = 0;
+		
+		/// <summary>
+		/// Gets the total amount of memory used to store command data.
+		/// </summary>
 		public long StoredBytes { get{ return m_commandsStoredBytes; } }
 
+		/// <summary>
+		/// Gets a value indicating whether there are redoable commands.
+		/// </summary>
 		public bool IsRedoable { get{ return m_redoCommands.Count > 0;} }
+		
+		/// <summary>
+		/// Gets a value indicating whether there are undoable commands.
+		/// </summary>
 		public bool IsUndoable { get{ return m_undoCommands.Count > 0;} }
 
+
+		/// <summary>
+		/// Adds a command to the command manager.
+		/// </summary>
+		/// <param name="p_cmd">The command to add.</param>
+		/// <param name="p_isAlreadyExecuted">Indicates whether the command has already been executed.</param>
 		public void Add(ICommand p_cmd, bool p_isAlreadyExecuted)
 		{
 			if (p_cmd != null)
@@ -85,12 +114,18 @@ namespace XRC.Core
 				Debug.LogError("UR_CommandMgr: Add: p_cmd is null!");
 			}
 		}
-
+		/// <summary>
+		/// Executes a command and adds it to the command manager.
+		/// </summary>
+		/// <param name="p_cmd">The command to execute.</param>
 		public void Execute(ICommand p_cmd)
 		{
 			Add(p_cmd, false);
 		}
-
+		/// <summary>
+		/// Redoes the last undone command.
+		/// </summary>
+		/// <returns>True if the redo was successful, false otherwise.</returns>
 		public bool Redo()
 		{
 			if (IsRedoable)
@@ -108,7 +143,10 @@ namespace XRC.Core
 				return false;
 			}
 		}
-
+		/// <summary>
+		/// Undoes the last executed command.
+		/// </summary>
+		/// <returns>True if the undo was successful, false otherwise.</returns>
 		public bool Undo()
 		{
 			if (IsUndoable)
@@ -127,6 +165,9 @@ namespace XRC.Core
 			}
 		}
 
+		/// <summary>
+		/// Resets the command manager, clearing all commands.
+		/// </summary>
 		public void Reset()
 		{
 			m_undoCommands.Clear();

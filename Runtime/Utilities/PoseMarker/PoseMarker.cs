@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Represents a pose marker in the scene that visualizes the pose in 3D space.
+/// </summary>
 public class PoseMarker : MonoBehaviour
 {
     private Material m_BlueMaterial;
@@ -15,6 +18,10 @@ public class PoseMarker : MonoBehaviour
     private GameObject m_ZAxis;
     private GameObject m_ZPositive;
     
+    /// <summary>
+    /// Handles the event when the pose marker is enabled or disabled.
+    /// </summary>
+    /// <param name="isEnabled">Indicates whether the pose marker is enabled.</param>
 
     private void HandlePoseMarkerEnabledChanged(bool isEnabled)
     {
@@ -30,12 +37,18 @@ public class PoseMarker : MonoBehaviour
             HidePoseMarker();
         }
     }
+    /// <summary>
+    /// Initializes the pose marker on Start.
+    /// </summary>
     private void Start()
     {
         CreateMaterials();
         CreatePoseMarker();
     }
 
+    /// <summary>
+    /// Shows the pose marker by enabling the necessary game objects.
+    /// </summary>
     public void ShowPoseMarker()
     {
         m_XAxis.GetComponent<MeshRenderer>().enabled = true;
@@ -47,7 +60,9 @@ public class PoseMarker : MonoBehaviour
         m_ZPositive.GetComponent<MeshRenderer>().enabled = true;
     }
 
-
+    /// <summary>
+    /// Hides the pose marker by disabling the necessary game objects.
+    /// </summary>
     public void HidePoseMarker()
     {
         m_XAxis.GetComponent<MeshRenderer>().enabled = false;
@@ -59,6 +74,9 @@ public class PoseMarker : MonoBehaviour
         m_ZPositive.GetComponent<MeshRenderer>().enabled = false;
     }
 
+    /// <summary>
+    /// Creates the necessary game objects to represent the pose marker.
+    /// </summary>
     private void CreatePoseMarker()
     {
         // Use the bounds of the renderer
@@ -72,11 +90,13 @@ public class PoseMarker : MonoBehaviour
         var scaleFactorMax = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) * 1.0f;
         var scaleFactorMin = Mathf.Min(bounds.size.x, bounds.size.y, bounds.size.z) * 1.0f;
 
-
         var axisWidth = Mathf.Clamp(scaleFactorMin * 0.05f, 0.01f, 0.2f);
         var indicatorWidth = 2 * axisWidth; 
         
         var axisSize = Mathf.Max(bounds.extents.x, Mathf.Max(bounds.extents.y, bounds.extents.z));
+
+        
+        // Create axis cubes
 
         m_XAxis = CreateCube(position, rotation, new Vector3(axisSize * 2.5f, axisWidth, axisWidth),
             m_RedMaterial, "xAxis");
@@ -85,6 +105,7 @@ public class PoseMarker : MonoBehaviour
         m_ZAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisWidth, axisSize * 2.5f),
             m_BlueMaterial, "zAxis");
 
+        // Create positive indicator cubes
 
         m_XPositive = CreateCube(position + Vector3.right * axisSize * 1.25f, rotation,
             new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_RedMaterial, "X-Positive");
@@ -103,6 +124,9 @@ public class PoseMarker : MonoBehaviour
         m_ZPositive.transform.SetParent(transform);
     }
 
+    /// <summary>
+    /// Creates the necessary materials for rendering the pose marker.
+    /// </summary>
     private void CreateMaterials()
     {
         // Create red material
@@ -120,7 +144,15 @@ public class PoseMarker : MonoBehaviour
         m_DefaultMaterial = new Material(Shader.Find("Unlit/Color"));
         m_DefaultMaterial.color = Color.white;
     }
-
+    /// <summary>
+    /// Creates a cube game object with the specified parameters.
+    /// </summary>
+    /// <param name="position">The position of the cube.</param>
+    /// <param name="rotation">The rotation of the cube.</param>
+    /// <param name="size">The size of the cube.</param>
+    /// <param name="material">The material to apply to the cube.</param>
+    /// <param name="name">The name of the cube game object.</param>
+    /// <returns>The created cube game object.</returns>
     private GameObject CreateCube(Vector3 position, Quaternion rotation, Vector3 size, Material material,
         string name = "cube")
     {
@@ -143,7 +175,11 @@ public class PoseMarker : MonoBehaviour
         return cube;
     }
 
-
+    /// <summary>
+    /// Creates a cube mesh with the specified size.
+    /// </summary>
+    /// <param name="size">The size of the cube.</param>
+    /// <returns>The created cube mesh.</returns>
     private Mesh CreateCubeMesh(Vector3 size)
     {
         var mesh = new Mesh();

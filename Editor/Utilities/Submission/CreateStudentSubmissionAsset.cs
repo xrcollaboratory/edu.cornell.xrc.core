@@ -1,7 +1,11 @@
-
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+///     This code creates a custom asset file of type StudentSubmissionSettings at the specified path in the
+///     Unity Editor. It also ensures that the required "Resources" directory exists and creates it if it doesn't exist.
+/// </summary>
 public class CreateStudentSubmissionAsset : MonoBehaviour
 {
     [MenuItem("XRC/Create Student Submission Asset")]
@@ -11,10 +15,10 @@ public class CreateStudentSubmissionAsset : MonoBehaviour
         CheckOrCreateResourcesDirectory();
 
         // Create a new instance of the ScriptableObject
-        StudentSubmissionSettings asset = ScriptableObject.CreateInstance<StudentSubmissionSettings>();
+        var asset = ScriptableObject.CreateInstance<StudentSubmissionSettings>();
 
         // Create the asset file at the selected path
-        string assetPath = "Assets/XRC/StudentInfo.asset";
+        var assetPath = "Assets/XRC/StudentInfo.asset";
         AssetDatabase.CreateAsset(asset, assetPath);
 
         // Save any pending asset changes
@@ -29,13 +33,13 @@ public class CreateStudentSubmissionAsset : MonoBehaviour
     private static void CheckOrCreateResourcesDirectory()
     {
         // Define the path of the Resources directory
-        string resourcesPath = Application.dataPath + "/XRC";
+        var resourcesPath = Application.dataPath + "/XRC";
 
         // Check if the Resources directory already exists
-        if (!System.IO.Directory.Exists(resourcesPath))
+        if (!Directory.Exists(resourcesPath))
         {
             // Create the Resources directory if it doesn't exist
-            System.IO.Directory.CreateDirectory(resourcesPath);
+            Directory.CreateDirectory(resourcesPath);
 
             // Refresh the Asset Database to show the newly created directory
             AssetDatabase.Refresh();
