@@ -14,18 +14,7 @@ public class PoseMarker : MonoBehaviour
     private GameObject m_YPositive;
     private GameObject m_ZAxis;
     private GameObject m_ZPositive;
-
-  
     
-    // private void OnEnable()
-    // {
-    //     PoseMarkerController.OnPoseMarkerEnabledChanged += HandlePoseMarkerEnabledChanged;
-    // }
-    //
-    // private void OnDisable()
-    // {
-    //     PoseMarkerController.OnPoseMarkerEnabledChanged -= HandlePoseMarkerEnabledChanged;
-    // }
 
     private void HandlePoseMarkerEnabledChanged(bool isEnabled)
     {
@@ -45,7 +34,6 @@ public class PoseMarker : MonoBehaviour
     {
         CreateMaterials();
         CreatePoseMarker();
-        //HidePoseMarker(); 
     }
 
     public void ShowPoseMarker()
@@ -74,8 +62,8 @@ public class PoseMarker : MonoBehaviour
     private void CreatePoseMarker()
     {
         // Use the bounds of the renderer
-        var renderer = GetComponent<Renderer>();
-        var bounds = renderer.bounds;
+        var rend = GetComponent<Renderer>();
+        var bounds = rend.bounds;
 
 
         var position = transform.position;
@@ -86,21 +74,23 @@ public class PoseMarker : MonoBehaviour
 
 
         var axisWidth = Mathf.Clamp(scaleFactorMin * 0.05f, 0.01f, 0.2f);
-        var indicatorWidth = 2 * axisWidth; //Mathf.Clamp(scaleFactorMin * 0.05f * 2.0f, 0.01f, 0.4f); 
+        var indicatorWidth = 2 * axisWidth; 
+        
+        var axisSize = Mathf.Max(bounds.extents.x, Mathf.Max(bounds.extents.y, bounds.extents.z));
 
-        m_XAxis = CreateCube(position, rotation, new Vector3(bounds.extents.x * 2.5f, axisWidth, axisWidth),
+        m_XAxis = CreateCube(position, rotation, new Vector3(axisSize * 2.5f, axisWidth, axisWidth),
             m_RedMaterial, "xAxis");
-        m_YAxis = CreateCube(position, rotation, new Vector3(axisWidth, bounds.extents.y * 2.5f, axisWidth),
+        m_YAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisSize* 2.5f, axisWidth),
             m_GreenMaterial, "yAxis");
-        m_ZAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisWidth, bounds.extents.z * 2.5f),
+        m_ZAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisWidth, axisSize * 2.5f),
             m_BlueMaterial, "zAxis");
 
 
-        m_XPositive = CreateCube(position + Vector3.right * bounds.extents.x * 1.25f, rotation,
+        m_XPositive = CreateCube(position + Vector3.right * axisSize * 1.25f, rotation,
             new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_RedMaterial, "X-Positive");
-        m_YPositive = CreateCube(position + Vector3.up * bounds.extents.y * 1.25f, rotation,
+        m_YPositive = CreateCube(position + Vector3.up * axisSize * 1.25f, rotation,
             new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_GreenMaterial, "Y-Positive");
-        m_ZPositive = CreateCube(position + Vector3.forward * bounds.extents.z * 1.25f, rotation,
+        m_ZPositive = CreateCube(position + Vector3.forward * axisSize * 1.25f, rotation,
             new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_BlueMaterial, "Z-Positive");
 
 
@@ -116,18 +106,18 @@ public class PoseMarker : MonoBehaviour
     private void CreateMaterials()
     {
         // Create red material
-        m_RedMaterial = new Material(Shader.Find("Standard"));
+        m_RedMaterial = new Material(Shader.Find("Unlit/Color"));
         m_RedMaterial.color = Color.red;
 
         // Create blue material
-        m_BlueMaterial = new Material(Shader.Find("Standard"));
+        m_BlueMaterial = new Material(Shader.Find("Unlit/Color"));
         m_BlueMaterial.color = Color.blue;
 
         // Create green material
-        m_GreenMaterial = new Material(Shader.Find("Standard"));
+        m_GreenMaterial = new Material(Shader.Find("Unlit/Color"));
         m_GreenMaterial.color = Color.green;
 
-        m_DefaultMaterial = new Material(Shader.Find("Standard"));
+        m_DefaultMaterial = new Material(Shader.Find("Unlit/Color"));
         m_DefaultMaterial.color = Color.white;
     }
 

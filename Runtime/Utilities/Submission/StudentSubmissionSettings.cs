@@ -23,12 +23,12 @@ public class StudentSubmissionSettings : ScriptableObject
     public string repoURL;
     [Header("Video Recording URL")]
     public string videoURL;
-    // [Header("Company Name")]
-    // public string m_CompName = "";
-    // [Header("Product Name")]
-    // public string m_ProdName = "";
-    // [Header("App Identifier")]
-    // public string m_AppIdentifier = "";
+    [Header("Company Name")]
+    public string m_CompName = "";
+    [Header("Product Name")]
+    public string m_ProdName = "";
+    [Header("App Identifier")]
+    public string m_AppIdentifier = "";
     
     
     [Header("Quest APK URL")]

@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 
@@ -31,60 +32,40 @@ public class PreprocessBuildWithSubmissionInfo : IPreprocessBuildWithReport
 
     private void ExecuteBeforeBuild()
     {
-        // Add your logic here for pre-build actions
         // This function will be called automatically before each build
         // You can perform any necessary tasks such as preparing data, modifying settings, etc.
 
 
-        LoadSettings();
+        LoadSubmissionSettingsFromAsset();
 
     }
     
     
-    void SaveSettings()
-    {
-        // PlayerSettings.companyName = m_CompName;
-        // PlayerSettings.productName = m_ProdName;
-        // PlayerSettings.applicationIdentifier = m_AppIdentifier;
-        // PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, m_AppIdentifier);
-        //
-        // EditorPrefs.SetString("CompName", m_CompName);
-        // EditorPrefs.SetString("ProdName", m_ProdName);
-        // EditorPrefs.SetString("App ID", m_AppIdentifier);
-    }
 
-    void LoadSettings()
+    void LoadSubmissionSettingsFromAsset()
     {
         // Define the folder path relative to the Application data path
-        // string folderPath = Application.dataPath + "/MyFolder";
-
-        // Define the full file path
-        // string filePath = folderPath + "/MyScriptableObject.asset";
-
-        
         string assetPath = "Assets/XRC/StudentInfo.asset";
         
-        
         // Load the ScriptableObject from the specified file path
-        StudentSubmissionSettings studentSubmissionSettings = UnityEditor.AssetDatabase.LoadAssetAtPath<StudentSubmissionSettings>(assetPath);
+        StudentSubmissionSettings studentSubmissionSettings = AssetDatabase.LoadAssetAtPath<StudentSubmissionSettings>(assetPath);
 
         // Check if the ScriptableObject was successfully loaded
         if (studentSubmissionSettings != null)
         {
 
-            // PlayerSettings.companyName = studentSubmissionSettings.m_CompName;
-            // PlayerSettings.productName = studentSubmissionSettings.m_ProdName;
-            // PlayerSettings.applicationIdentifier = studentSubmissionSettings.m_AppIdentifier;
+            PlayerSettings.companyName = studentSubmissionSettings.m_CompName;
+            PlayerSettings.productName = studentSubmissionSettings.m_ProdName;
+            PlayerSettings.applicationIdentifier = studentSubmissionSettings.m_AppIdentifier;
 
-            // m_CompName = studentSubmissionSettings.
-            // Retrieve data from the ScriptableObject and print it to the console
-            // Debug.Log("ScriptableObject data:");
-            // Debug.Log("Name: " + myScriptableObject.name);
-            // Debug.Log("Value: " + myScriptableObject.value);
+ 
         }
         else
         {
-            // Debug.LogError("ScriptableObjectDataPrinter: Failed to load the ScriptableObject!");
+            Debug.LogError("LoadSubmissionSettingsFromAsset: Please make sure you fill out StudentSubmissionSettings file in Assets/XRC/StudentInfo.asset.");
+            
+            AssetDatabase.CreateAsset(studentSubmissionSettings, assetPath);
+
         }
     }
     

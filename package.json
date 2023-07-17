@@ -23,6 +23,11 @@
 			"displayName": "PoseMarker",
 			"description": "Contains example usage of the PoseMarker component.",
 			"path": "Samples~/PoseMarker"
+		},
+		{
+			"displayName": "StarterAssets",
+			"description": ".",
+			"path": "Samples~/PoseMarker"
 		}
 	]
 }
