@@ -7,6 +7,9 @@
 	"unityRelease": "4f1",
 	"dependencies": {
 	},
+	"documentationUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
+	"changelogUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/changelog/CHANGELOG.html",
+	"licensesUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/license/LICENSE.html",
 	"keywords": [
 		"XRC",
 		"XR Collaboratory"
