@@ -96,18 +96,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.StudentSubmissionSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.StudentSubmissionSettings.html",
-          "hash": "M9+gXvpfdsfW68NelzOnI9hcfa8Ai80F3S59CCfuIiU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/XRC.Core.UtilityOnDestroyHandler.yml",
       "output": {
         ".html": {
@@ -124,7 +112,7 @@
       "output": {
         ".html": {
           "relative_path": "api/XRC.Core.html",
-          "hash": "9D6VnUEmp6niMDk/Za/VgTscgCegFIlz1ykvF/oiNLA="
+          "hash": "BOKH837STg/ACACqZFsydD0M0fkiwVluIL7RvDUpLls="
         }
       },
       "is_incremental": false,
@@ -136,7 +124,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "DFYWIJwz/ZMvS14EBL1pP/EjndUdPbhBQg5aNiUVE+g="
+          "hash": "xBoWMifbUZe7JSjKHcezWugpNuz+0L0jbQTBu+eXBuk="
         }
       },
       "is_incremental": false,
@@ -270,7 +258,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 9,
+          "total_file_count": 8,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
