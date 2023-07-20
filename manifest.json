@@ -28,7 +28,7 @@
       "output": {
         ".html": {
           "relative_path": "api/XRC.Core.CommandBase.html",
-          "hash": "O87zv1khURVAbjbqOcE+NTXtlrm3IImOcEys7M+zXcI="
+          "hash": "1YcrbmgWjn2q2rEv6KAf8xkVVKtLcaB6yryz9jxqgUI="
         }
       },
       "is_incremental": false,
@@ -40,7 +40,7 @@
       "output": {
         ".html": {
           "relative_path": "api/XRC.Core.CommandManager.html",
-          "hash": "QiDpgZGImck4u2v4Nfnl84+XSy2N/TWVhTuGHVJEOLg="
+          "hash": "wRn+A0PeAGlcFO+Vwl1TDLL4jNePr1j6/8OmidzCkqY="
         }
       },
       "is_incremental": false,
@@ -64,7 +64,7 @@
       "output": {
         ".html": {
           "relative_path": "api/XRC.Core.MonoBehaviourSingleton-1.html",
-          "hash": "wi+9KYSgGEsKnpXTCoGPiMFSSw52fdNxl2zS0zf9/DM="
+          "hash": "g9z8gvqLHcn9j0ZMYwXMWRQG5Ftl7BXdbwo7rKCQxlU="
         }
       },
       "is_incremental": false,
@@ -112,7 +112,7 @@
       "output": {
         ".html": {
           "relative_path": "api/XRC.Core.html",
-          "hash": "BOKH837STg/ACACqZFsydD0M0fkiwVluIL7RvDUpLls="
+          "hash": "5jsbvAs64kOEkDZ40aVPrITYoImhkvC50fh+W+AUhVY="
         }
       },
       "is_incremental": false,
@@ -136,7 +136,7 @@
       "output": {
         ".html": {
           "relative_path": "changelog/CHANGELOG.html",
-          "hash": "1ILtXgFECiDRlere72FpWNmXSfN9X3yiB4PRUdQ7+Cg="
+          "hash": "oISUB+1M+zLznBhSLRgtZe7sQaaMX/OsqhwEFIb6/Og="
         }
       },
       "is_incremental": false,

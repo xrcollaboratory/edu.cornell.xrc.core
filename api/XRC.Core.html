@@ -88,25 +88,14 @@
     <h3 id="classes">Classes
   </h3>
       <h4><a class="xref" href="XRC.Core.CommandBase.html">CommandBase</a></h4>
-      <section><p>Provides an abstract base class for commands that implement the ICommand interface.</p>
+      <section><p>Provides an abstract base class for commands that implement the ICommand <a class="xref" href="XRC.Core.ICommand.html">ICommand</a> interface.</p>
 </section>
       <h4><a class="xref" href="XRC.Core.CommandManager.html">CommandManager</a></h4>
-      <section><p>Manages the execution, undo, and redo of commands in the application.</p>
+      <section><p>Manages the execution, undo, and redo of commands in the application.
+Commands must inherit from the ICommand interface. <a class="xref" href="XRC.Core.ICommand.html">ICommand</a></p>
 </section>
       <h4><a class="xref" href="XRC.Core.MonoBehaviourSingleton-1.html">MonoBehaviourSingleton&lt;T&gt;</a></h4>
-      <section><p>MonoBehaviourSingleton is a generic base class for creating MonoBehaviour singletons. The generic type T
-represents the type of the singleton component. The class provides a static property Instance that allows access to
-the singleton instance.
-The Instance property utilizes lazy initialization to create and return the singleton instance.If
-the _instance variable is null, it searches for objects of
-type T in the scene using
-FindObjectsOfType.If there is only one instance found, it assigns it to _instance.If there are more than
-one instances found, it logs an error.If no instance is found, it creates a
-new GameObject and adds the component T to it.The new GameObject is set to be
-hidden and not saved in the scene.Finally, it assigns the component to _instance and returns it.
-The purpose of this
-class is to ensure that only one instance of the specified component type exists in the scene at any given time.</p>
-</section>
+      <section></section>
       <h4><a class="xref" href="XRC.Core.MonoBehaviourSingletonPersistent-1.html">MonoBehaviourSingletonPersistent&lt;T&gt;</a></h4>
       <section></section>
       <h4><a class="xref" href="XRC.Core.PoseMarker.html">PoseMarker</a></h4>

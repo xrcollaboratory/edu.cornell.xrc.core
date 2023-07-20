@@ -83,7 +83,8 @@
   
   <h1 id="XRC_Core_CommandManager" data-uid="XRC.Core.CommandManager" class="text-break">Class CommandManager
   </h1>
-  <div class="markdown level0 summary"><p>Manages the execution, undo, and redo of commands in the application.</p>
+  <div class="markdown level0 summary"><p>Manages the execution, undo, and redo of commands in the application.
+Commands must inherit from the ICommand interface. <a class="xref" href="XRC.Core.ICommand.html">ICommand</a></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -148,7 +149,8 @@
   </table>
   <a id="XRC_Core_CommandManager_IsDestroyedOnSceneLoad_" data-uid="XRC.Core.CommandManager.IsDestroyedOnSceneLoad*"></a>
   <h4 id="XRC_Core_CommandManager_IsDestroyedOnSceneLoad" data-uid="XRC.Core.CommandManager.IsDestroyedOnSceneLoad">IsDestroyedOnSceneLoad</h4>
-  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the CommandManager is destroyed when a new scene is loaded.</p>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the CommandManager is destroyed when a new scene is loaded <a class="xref" href="XRC.Core.CommandManager.html">CommandManager</a>.
+Usese the UtilityOnDestroyHandler to notify other game objects of Destroy events and resets the CommandManager. <a class="xref" href="XRC.Core.UtilityOnDestroyHandler.html">UtilityOnDestroyHandler</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>

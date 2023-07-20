@@ -83,19 +83,7 @@
   
   <h1 id="XRC_Core_MonoBehaviourSingleton_1" data-uid="XRC.Core.MonoBehaviourSingleton`1" class="text-break">Class MonoBehaviourSingleton&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>MonoBehaviourSingleton is a generic base class for creating MonoBehaviour singletons. The generic type T
-represents the type of the singleton component. The class provides a static property Instance that allows access to
-the singleton instance.
-The Instance property utilizes lazy initialization to create and return the singleton instance.If
-the _instance variable is null, it searches for objects of
-type T in the scene using
-FindObjectsOfType.If there is only one instance found, it assigns it to _instance.If there are more than
-one instances found, it logs an error.If no instance is found, it creates a
-new GameObject and adds the component T to it.The new GameObject is set to be
-hidden and not saved in the scene.Finally, it assigns the component to _instance and returns it.
-The purpose of this
-class is to ensure that only one instance of the specified component type exists in the scene at any given time.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -119,8 +107,7 @@ class is to ensure that only one instance of the specified component type exists
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The type of the singleton component.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
