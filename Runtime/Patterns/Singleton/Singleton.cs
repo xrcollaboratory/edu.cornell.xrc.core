@@ -16,6 +16,17 @@ namespace XRC.Core
     ///     The purpose of this
     ///     class is to ensure that only one instance of the specified component type exists in the scene at any given time.
     /// </summary>
+    /// <remarks>
+    /// MonoBehaviourSingleton can be used as in the following 
+    ///
+    /// <example>
+    /// <code>
+    /// public class CustomComponent : MonoBehaviourSingleton<CustomComponent>
+    /// and then to reference the instance,
+    /// float currentValue = CustomComponent.Instance.currentValue;
+    /// </code>
+    /// </example>
+    /// </remarks>
     /// <typeparam name="T">The type of the singleton component.</typeparam>
     public class MonoBehaviourSingleton<T> : MonoBehaviour
         where T : Component

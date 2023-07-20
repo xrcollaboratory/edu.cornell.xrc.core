@@ -6,6 +6,7 @@ namespace XRC.Core
 {
 	/// <summary>
 	/// Manages the execution, undo, and redo of commands in the application.
+	/// Commands must inherit from the ICommand interface. <see cref="ICommand"/>
 	/// </summary>
 	public class CommandManager
 	{
@@ -20,7 +21,8 @@ namespace XRC.Core
 		
 		
 		/// <summary>
-		/// Gets or sets a value indicating whether the CommandManager is destroyed when a new scene is loaded.
+		/// Gets or sets a value indicating whether the CommandManager is destroyed when a new scene is loaded <see cref="CommandManager"/>.
+		/// Usese the UtilityOnDestroyHandler to notify other game objects of Destroy events and resets the CommandManager. <see cref="UtilityOnDestroyHandler"/>
 		/// </summary>
 		public bool IsDestroyedOnSceneLoad
 		{

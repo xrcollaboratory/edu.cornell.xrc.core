@@ -5,7 +5,7 @@ namespace XRC.Core
 {
 	
 	/// <summary>
-	/// Provides an abstract base class for commands that implement the ICommand interface.
+	/// Provides an abstract base class for commands that implement the ICommand <see cref="ICommand"/> interface.
 	/// </summary>
 	public abstract class CommandBase : ICommand
 	{
