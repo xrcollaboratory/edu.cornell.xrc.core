@@ -156,10 +156,32 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/logo.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/logo.png",
       "output": {
         "resource": {
           "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.svg"
         }
       },
       "is_incremental": false,
