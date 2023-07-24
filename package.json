@@ -1,6 +1,6 @@
 {
 	"name": "edu.cornell.xrc.core",
-	"version": "0.1.0",
+	"version": "0.1.1,
 	"displayName": "XRC Core",
 	"description": "This repo contains a collection of core utilities to be used by XR Collaboratory.",
 	"unity": "2022.3",

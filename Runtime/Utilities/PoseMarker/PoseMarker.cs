@@ -103,22 +103,26 @@ namespace XRC.Core
 
             // Create axis cubes
 
-            m_XAxis = CreateCube(position, rotation, new Vector3(axisSize * 2.5f, axisWidth, axisWidth),
+            m_XAxis = CreateCube(position + Vector3.right  * 0.25f, rotation, new Vector3(axisSize * 1.25f, axisWidth, axisWidth),
                 m_RedMaterial, "xAxis");
-            m_YAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisSize * 2.5f, axisWidth),
+            m_YAxis = CreateCube(position + Vector3.up  * 0.25f, rotation, new Vector3(axisWidth, axisSize * 1.25f, axisWidth),
                 m_GreenMaterial, "yAxis");
-            m_ZAxis = CreateCube(position, rotation, new Vector3(axisWidth, axisWidth, axisSize * 2.5f),
+            m_ZAxis = CreateCube(position + Vector3.forward  * 0.25f, rotation, new Vector3(axisWidth, axisWidth, axisSize * 1.25f),
                 m_BlueMaterial, "zAxis");
 
             // Create positive indicator cubes
 
-            m_XPositive = CreateCube(position + Vector3.right * axisSize * 1.25f, rotation,
+            float offset = (axisSize + 2.5f* indicatorWidth ); // - 0.25f);
+
+            m_XPositive = CreateCube(position + Vector3.right * offset , rotation,
                 new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_RedMaterial, "X-Positive");
-            m_YPositive = CreateCube(position + Vector3.up * axisSize * 1.25f, rotation,
+            m_YPositive = CreateCube(position + Vector3.up * offset , rotation,
                 new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_GreenMaterial, "Y-Positive");
-            m_ZPositive = CreateCube(position + Vector3.forward * axisSize * 1.25f, rotation,
+            m_ZPositive = CreateCube(position + Vector3.forward * offset , rotation,
                 new Vector3(indicatorWidth, indicatorWidth, indicatorWidth), m_BlueMaterial, "Z-Positive");
 
+            
+            // Rotate the cube
 
             // After PoseMarker has been initialized, parent it to the game object.
             m_XAxis.transform.SetParent(transform);
@@ -176,6 +180,7 @@ namespace XRC.Core
             // Apply the rotation to align the cube
             var rot = Quaternion.FromToRotation(cubeDirection, targetDirection);
             cube.transform.RotateAround(customPivot.position, transform.up, rot.eulerAngles.y);
+            
             var rend = cube.GetComponent<Renderer>();
             rend.material = material;
             return cube;
