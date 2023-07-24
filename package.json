@@ -25,11 +25,7 @@
 			"displayName": "StarterAssets",
 			"description": "A few sample assets to get you started.",
 			"path": "Samples~/StarterAssets"
-		}
-	],
-	,
-
-	"alignement": [
+		},
 		{
 			"displayName": "Alignment",
 			"description": "An example with generating verticle quads for alignment.",
