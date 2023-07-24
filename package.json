@@ -1,6 +1,6 @@
 {
 	"name": "edu.cornell.xrc.core",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"displayName": "XRC Core",
 	"description": "This repo contains a collection of core utilities to be used by XR Collaboratory.",
 	"unity": "2022.3",
@@ -16,8 +16,6 @@
 	],
 	"author": {
 		"name": "XR Collaboratory",
-		"email": "NETID@cornell.edu",
-		"url": "https://xr.cornell.edu/collaboratory"
 	},
 
 	"samples": [
@@ -25,11 +23,6 @@
 			"displayName": "StarterAssets",
 			"description": "A few sample assets to get you started.",
 			"path": "Samples~/StarterAssets"
-		},
-		{
-			"displayName": "Alignment",
-			"description": "An example with generating verticle quads for alignment.",
-			"path": "Samples~/Alignment"
 		}
 	]
 }
