@@ -20,11 +20,12 @@
     ],
     "build": {
         "globalMetadata": {
-            "_appTitle": "<XRC Package Template>",
+            "_appTitle": "XRC Core",
             "_appFooter": "XR Collaboratory",
             "_enableSearch": true,
             "_disableContribution": true,
-            "_appLogoPath": "images/logo.png"
+            "_appLogoPath": "images/logo.svg",
+            "_appFaviconPath": "images/logo.ico"
         },
         "content": [
             {
