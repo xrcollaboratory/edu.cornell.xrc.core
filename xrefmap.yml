@@ -347,38 +347,6 @@ references:
   fullName.vb: XRC.Core.MonoBehaviourSingletonPersistent(Of T).Instance
   nameWithType: MonoBehaviourSingletonPersistent<T>.Instance
   nameWithType.vb: MonoBehaviourSingletonPersistent(Of T).Instance
-- uid: XRC.Core.PoseMarker
-  name: PoseMarker
-  href: api/XRC.Core.PoseMarker.html
-  commentId: T:XRC.Core.PoseMarker
-  fullName: XRC.Core.PoseMarker
-  nameWithType: PoseMarker
-- uid: XRC.Core.PoseMarker.HidePoseMarker
-  name: HidePoseMarker()
-  href: api/XRC.Core.PoseMarker.html#XRC_Core_PoseMarker_HidePoseMarker
-  commentId: M:XRC.Core.PoseMarker.HidePoseMarker
-  fullName: XRC.Core.PoseMarker.HidePoseMarker()
-  nameWithType: PoseMarker.HidePoseMarker()
-- uid: XRC.Core.PoseMarker.HidePoseMarker*
-  name: HidePoseMarker
-  href: api/XRC.Core.PoseMarker.html#XRC_Core_PoseMarker_HidePoseMarker_
-  commentId: Overload:XRC.Core.PoseMarker.HidePoseMarker
-  isSpec: "True"
-  fullName: XRC.Core.PoseMarker.HidePoseMarker
-  nameWithType: PoseMarker.HidePoseMarker
-- uid: XRC.Core.PoseMarker.ShowPoseMarker
-  name: ShowPoseMarker()
-  href: api/XRC.Core.PoseMarker.html#XRC_Core_PoseMarker_ShowPoseMarker
-  commentId: M:XRC.Core.PoseMarker.ShowPoseMarker
-  fullName: XRC.Core.PoseMarker.ShowPoseMarker()
-  nameWithType: PoseMarker.ShowPoseMarker()
-- uid: XRC.Core.PoseMarker.ShowPoseMarker*
-  name: ShowPoseMarker
-  href: api/XRC.Core.PoseMarker.html#XRC_Core_PoseMarker_ShowPoseMarker_
-  commentId: Overload:XRC.Core.PoseMarker.ShowPoseMarker
-  isSpec: "True"
-  fullName: XRC.Core.PoseMarker.ShowPoseMarker
-  nameWithType: PoseMarker.ShowPoseMarker
 - uid: XRC.Core.UtilityOnDestroyHandler
   name: UtilityOnDestroyHandler
   href: api/XRC.Core.UtilityOnDestroyHandler.html

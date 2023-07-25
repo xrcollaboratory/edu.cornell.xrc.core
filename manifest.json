@@ -84,18 +84,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.PoseMarker.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.PoseMarker.html",
-          "hash": "k1JudLb7IYlvZkY3YqQVSev8nERf7K+R/A2cDFi5p+I="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/XRC.Core.UtilityOnDestroyHandler.yml",
       "output": {
         ".html": {
@@ -112,7 +100,7 @@
       "output": {
         ".html": {
           "relative_path": "api/XRC.Core.html",
-          "hash": "TghlDfCMfxS3iH8oxu9rAT9lhwqxMvDhvNfQsJO5yQU="
+          "hash": "UO/3ESQajA0fHKDSZreQ0xbscW1cbyNGtJ1A/gbSpnU="
         }
       },
       "is_incremental": false,
@@ -124,7 +112,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "xBoWMifbUZe7JSjKHcezWugpNuz+0L0jbQTBu+eXBuk="
+          "hash": "+tpaJ735HgDA6pS9ka2+9jKRn1RATKnn7x5WKzbIDt8="
         }
       },
       "is_incremental": false,
@@ -269,7 +257,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 8,
+          "total_file_count": 7,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
