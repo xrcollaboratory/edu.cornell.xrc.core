@@ -124,7 +124,7 @@
       "output": {
         ".html": {
           "relative_path": "changelog/CHANGELOG.html",
-          "hash": "s4T+egTcr/un1gAnrB9Jcjs01DgTva01UGxFGRBp6aw="
+          "hash": "y/ILpedVHWxnWIfJzU0m20B2amki8ttXc4tsbYxEO8Q="
         }
       },
       "is_incremental": false,
@@ -165,12 +165,23 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/xrc-core-prefabs.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/xrc-core-prefabs.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "Lm8n9BgYbnJivnKZJP1YIOrWeEMaqhzVB7rn8QrdJns="
+          "hash": "JnZ8ioZwRjX2lU3YB8LfyrjLSGtmf9vPQATfGSwSPcs="
         }
       },
       "is_incremental": false,
