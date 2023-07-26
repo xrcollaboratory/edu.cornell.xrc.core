@@ -1,11 +1,13 @@
 {
 	"name": "edu.cornell.xrc.core",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"displayName": "XRC Core",
 	"description": "This repo contains a collection of core utilities to be used by XR Collaboratory.",
 	"unity": "2022.3",
 	"unityRelease": "4f1",
 	"dependencies": {
+		"com.unity.inputsystem": "1.6.1",
+		"com.unity.xr.interaction.toolkit": "2.4.0"
 	},
 	"documentationUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
 	"changelogUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/changelog/CHANGELOG.html",
@@ -20,9 +22,9 @@
 
 	"samples": [
 		{
-			"displayName": "StarterAssets",
+			"displayName": "XRC Starter Assets",
 			"description": "A few sample assets to get you started.",
-			"path": "Samples~/StarterAssets"
+			"path": "Samples~/XRC Starter Assets"
 		}
 	]
 }

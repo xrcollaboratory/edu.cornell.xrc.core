@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- Headers should be listed in this order: Added, Changed, Deprecated, Removed, Fixed, Security -->
 
+## [0.1.1] - 2023-07-26
+
+### Added
+- Added dependency on XR Interaction Toolkit. Samples currently depend on XRI, and runtime scripts will also have a dependency on XRI.
+
+### Changed 
+- Changed sample folder name and sample scene name
+- Removed Event System from sample scene and rearranged scene hierarchy
+
 ## [0.1.1] - 2023-07-24
 
 ### Added 
