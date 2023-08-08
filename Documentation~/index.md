@@ -1,7 +1,7 @@
 # XRC Core
 
 ## Overview
-
+   
 <!--  Provide a brief, high-level explanation of the package.-->
 The XRC Core package is a collection of resources, utilities, and design patterns that serve as the foundation for other XRC packages within the Unity development environment. It provides developers with a core set of tools to streamline the creation of applications, simplifying the development process, and accelerating iteration cycles.
 
@@ -18,7 +18,7 @@ Here are some of the important files and their respective locations within the p
 
 **Singleton**
 
-The Singleton pattern is a creational design pattern that ensures the existence of only one instance of a class and provides a global point of access to it. In Unity scripting, the Singleton pattern is commonly used to manage resources, data, or systems that should have a single, centralized instance throughout the lifespan of the application.
+The Singleton pattern is a design pattern that ensures the existence of only one instance of a class and provides a global point of access to it. In Unity scripting, the Singleton pattern is commonly used to manage resources, data, or systems that should have a single, centralized instance throughout the lifespan of the application.
 
 
 **Observer**
@@ -106,5 +106,5 @@ This prefab can be used to indicate a pose of an object by placing it as a child
 <!--
 ## Tutorials
 
-If you want to provide walkthroughs for complicated procedures, you can also add them here. Use step-by-step instructions and include images if they can help the user understand.
+If you want to provide a walkthrough for a complicated procedure, you can also add them here. Use step-by-step instructions and include images if they can help the user understand.
 -->
