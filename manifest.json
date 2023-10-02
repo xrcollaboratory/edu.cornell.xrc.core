@@ -2,7 +2,6 @@
   "sitemap": {
     "fileOptions": {
       "api/*": {
-        "baseUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
         "changefreq": "daily"
       }
     },
@@ -21,102 +20,6 @@
         }
       },
       "is_incremental": false
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.CommandBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.CommandBase.html",
-          "hash": "HUFVrTwl7pToc0bhiAl/vaiSlflpNrfcznvJdjgEQpU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.CommandManager.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.CommandManager.html",
-          "hash": "1BOmkrzQLdtrNYkx1XuQfVxJFuInM9YDej5+ACUom5Q="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.ICommand.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.ICommand.html",
-          "hash": "oTqGfzRBjR2kJEkbX3jmFxWkn79wRVJ2Ga0ZvagJ7Pg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.MonoBehaviourSingleton-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.MonoBehaviourSingleton-1.html",
-          "hash": "30L1mdCB6VPqeXRoBFlkJnRD09WK/KxhowU0i6Tkz80="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.MonoBehaviourSingletonPersistent-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.MonoBehaviourSingletonPersistent-1.html",
-          "hash": "HJZ6XcKPUJ43V+HwHcYQ9+dZuyIL9jZ6w5F3k7Jpa5M="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.UtilityOnDestroyHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.UtilityOnDestroyHandler.html",
-          "hash": "8ORJKRclqdfczLrQ+fuidfYIUJn7nK35G8+H5BFHhD4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.html",
-          "hash": "UO/3ESQajA0fHKDSZreQ0xbscW1cbyNGtJ1A/gbSpnU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "api/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "+tpaJ735HgDA6pS9ka2+9jKRn1RATKnn7x5WKzbIDt8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
     },
     {
       "type": "Conceptual",
@@ -241,7 +144,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "ygTFRuZhJm1winiqLvA6R9dH5wpdvBhF4PnKHj7V/Rk="
+          "hash": "CJBCKob/u5177sf5p+P6KyhgBL34RLIqZkrIUKQTB+U="
         }
       },
       "is_incremental": false,
@@ -263,12 +166,6 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 7,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
