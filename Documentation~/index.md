@@ -3,7 +3,7 @@
 ## Overview
    
 <!--  Provide a brief, high-level explanation of the package.-->
-The XRC Core package is a collection of resources, utilities, and design patterns that serve as the foundation for other XRC packages within the Unity development environment. It provides developers with a core set of tools to streamline the creation of applications, simplifying the development process, and accelerating iteration cycles.
+The XRC Core package is a collection of utility scripts and assets that serve as the foundation for other XRC packages. It provides XRC developers with a core set of tools to streamline the creation of applications, by simplifying the development process and accelerating iteration cycles.
 
 ## Package contents	
 <!--  Include the location of important files you want the user to know about. For example, if this is a sample package containing textures, models, and materials separated by sample group, you might want to provide the folder location of each group.-->
@@ -11,23 +11,6 @@ The XRC Core package is a collection of resources, utilities, and design pattern
 These directories, along with their respective files, are organized within the XRC Core package to provide developers with a structured and accessible resources for XR development.
 
 Here are some of the important files and their respective locations within the package:
-
-
-### Patterns
-
-
-**Singleton**
-
-The Singleton pattern is a design pattern that ensures the existence of only one instance of a class and provides a global point of access to it. In Unity scripting, the Singleton pattern is commonly used to manage resources, data, or systems that should have a single, centralized instance throughout the lifespan of the application.
-
-
-**Observer**
-
-The Observer pattern is a behavioral design pattern that establishes a one-to-many relationship between objects. In this pattern, when the state of one object (called the subject) changes, all its dependent objects (called observers) are automatically notified and updated. In Unity scripting, the Observer pattern is commonly used to implement event-driven systems, allowing objects to react and respond to changes or events in a decoupled and flexible manner.
-
-**Command**
-
-In Unity, the Command pattern is particularly useful for implementing features like undo and redo functionality, input handling, AI behavior, and more. It helps organize and manage complex interactions by separating the requester, the controller, and the executor (command object) of an operation.
 
 <!-- 
 Furthermore, the package incorporates essential math classes that enable complex calculations and operations commonly required in virtual reality and augmented reality applications. These math classes encompass vector and quaternion math, projective geometry, meshes, and other useful scripts, empowering developers to implement advanced visual and spatial computations effortlessly.
