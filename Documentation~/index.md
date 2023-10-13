@@ -3,46 +3,25 @@
 ## Overview
    
 <!--  Provide a brief, high-level explanation of the package.-->
-The XRC Core package is a collection of utility scripts and assets that serve as the foundation for other XRC packages. It provides XRC developers with a core set of tools to streamline the creation of applications, by simplifying the development process and accelerating iteration cycles.
-
-## Package contents	
-<!--  Include the location of important files you want the user to know about. For example, if this is a sample package containing textures, models, and materials separated by sample group, you might want to provide the folder location of each group.-->
-
-These directories, along with their respective files, are organized within the XRC Core package to provide developers with a structured and accessible resources for XR development.
-
-Here are some of the important files and their respective locations within the package:
-
-<!-- 
-Furthermore, the package incorporates essential math classes that enable complex calculations and operations commonly required in virtual reality and augmented reality applications. These math classes encompass vector and quaternion math, projective geometry, meshes, and other useful scripts, empowering developers to implement advanced visual and spatial computations effortlessly.
-
-
-
-Runtime - Patterns: This directory houses a comprehensive collection of game design patterns commonly employed in XR development. These patterns serve as reusable templates and methodologies that enhance code organization, maintainability, and extensibility. Developers can find a variety of patterns, such as the Singleton pattern, Observer pattern, State pattern, and more, within this directory.
-
-Runtime - Patterns - Command: Within the Patterns directory, the Command subdirectory specifically focuses on the Command pattern. The Command pattern is particularly useful for implementing Undo/Redo command operations. By encapsulating actions or operations into separate command objects, developers can easily track and execute these commands, enabling efficient undo and redo functionality in their XR applications. -->
+The XRC Core package is a utility package that serves as the foundation for other XRC packages. It provides XRC developers with a core set of tools to streamline the creation of applications, by simplifying the development process and accelerating iteration cycles.
 
 
 
 ## Installation instructions
-<!--  You can point to the official Package Manager installation instructions, but if you have any special installation requirements, such as installing samples, add them here. -->
 
-Use the Unity Package Manager (in Unity’s top menu: 
-`Window > Package Manager`) to view which packages are available for installation or already installed in your Project. In addition, you can use this window to see which versions are available, and install, remove, disable, or update packages for each Project.
-
-To install using git url, click on the `+` icon in the top left corner of the Package Manager window. 
-
-Then select `Add package from git URL...` and paste the following URL. 
-
-https://github.com/xrcollaboratory/edu.cornell.xrc.core.git
-
-From the package window, you will see the package name, it's description, and a dropdown menu for **Samples**. Import any Samples that are useful for your project for examples on how the package can be used. 
-
-
+### Package Manager
+To install this package, follow these steps:
+1. In the Unity Editor, click on Window > Package Manager
+2. Click the + button and choose **Add package from git URL** option
+3. Paste this URL https://github.com/xrcollaboratory/edu.cornell.xrc.core.git in the prompt and click on Add
+4. If the package is private you might have to authenticate, if you have been granted access to this package
+5. The package should be installed into your project
+6. You can download Samples from under **Samples** in Package Manager
 
 ## Requirements	
 <!-- This is a good place to add hardware or software requirements, including which versions of the Unity Editor this package is compatible with. -->
 
-This package should work with most versions of Unity. It has been tested on versions 2021.3 and above. 
+This package has been tested using Unity Editor 2022.3.7f1 (LTS).
 
 Dependencies: XR Interaction Toolkit, Input System.
 
@@ -55,7 +34,7 @@ If your package has any known limitations, you can list them here. If not, or if
 ## Workflows	
 <!-- Include a list of steps that the user can easily follow that demonstrates how to use the feature. You can include screenshots to help describe how to use the feature. -->
 
-In most cases, you will not need to modify scripts within XRC.Core. Any files in the Package directory are set to Read Only and therefore should not be modified. The recommended workflow is to extend existing classes rather than modify them. This can be done by inheritance or composition. 
+Currently, the primary use case for this package is to use the prefabs that are distributed via the package samples, see below. 
 
 <!-- 
 ## Advanced topics
@@ -74,7 +53,7 @@ If you have a user interface with a lot of properties, you can provide the detai
 
 ### XRC Starter Assets
 
-This sample offers a range of materials, models, prefabs, scenes, and other assets that are not shipped with the runtime package scripts. These assets provide a starting point for building virtual environments, saving developers time and effort in the initial setup process.
+This sample offers a range of materials, models, prefabs, scenes, and other assets that are not shipped with the runtime package scripts. These assets provide a starting point for building virtual environments, saving developers time and effort during the initial setup process.
 
 #### PlayArea
 
