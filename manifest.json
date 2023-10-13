@@ -2,7 +2,6 @@
   "sitemap": {
     "fileOptions": {
       "api/*": {
-        "baseUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
         "changefreq": "daily"
       }
     },
@@ -21,66 +20,6 @@
         }
       },
       "is_incremental": false
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.Utilities.DebugPublisher.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.Utilities.DebugPublisher.html",
-          "hash": "3vLZqN0Sjwcdp9q+iEFcPk8WJofic0THAHJjbOn7O6Q="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.Utilities.DebugPublisherInput.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.Utilities.DebugPublisherInput.html",
-          "hash": "wrG1fUJwLYlM+61rghDITmmp1hkV75TarVjRVhYTcek="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.Utilities.DebugReceiver.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.Utilities.DebugReceiver.html",
-          "hash": "nNVkXjDIvWfthJm1XVyCJiN+USLtecMG3pQgZMXwSMY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Core.Utilities.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/XRC.Core.Utilities.html",
-          "hash": "u/+NtjY9/4VR7NAOpsjqHp95OJN5H+wb/8uKb6ic+Qg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "api/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "3V/J7rQiDjn6a5zQ2XJODj3kfzBEaj7b6Xv5YvIk1xo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
     },
     {
       "type": "Conceptual",
@@ -145,7 +84,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "sXfMRLHLafPQPHeHjS18cyJxAg+ArCiq5uGIx9gZ/gU="
+          "hash": "p933Mg8Uzj0eo1OOEuF2LZesnOsYqMXIz8sEImDrqOg="
         }
       },
       "is_incremental": false,
@@ -205,7 +144,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "zEvKfuAwmVmeXFSPNR0u17TLxjlDMXImu7t5jqRSNPw="
+          "hash": "CJBCKob/u5177sf5p+P6KyhgBL34RLIqZkrIUKQTB+U="
         }
       },
       "is_incremental": false,
@@ -224,12 +163,6 @@
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 4,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
