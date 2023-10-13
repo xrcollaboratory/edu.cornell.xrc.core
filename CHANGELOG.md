@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- Headers should be listed in this order: Added, Changed, Deprecated, Removed, Fixed, Security -->
 
+## [0.1.3] - 2023-10-12
+
+### Changed
+- Updated documentation
+- Changed scale of PoseMarker prefab
+
 ## [0.1.2] - 2023-07-26
 
 ### Added
