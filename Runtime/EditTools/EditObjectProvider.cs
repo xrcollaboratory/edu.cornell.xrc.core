@@ -13,7 +13,7 @@ namespace XRC.Core
     /// <remarks>
     /// This component is used in edit tools that implement the <see cref="IEditTool"/> interface, such as XRC Mesh Tool, XRC Scale Tool, and XRC Color Tool, for providing the game object to be edited.
     /// </remarks>
-    public class EditObjectProvider : MonoBehaviour, IRunnable
+    public class EditObjectProvider : MonoBehaviour 
     {
         [SerializeField]
         private XRBaseInteractor m_Interactor;
@@ -23,19 +23,15 @@ namespace XRC.Core
 
         [SerializeField]
         private bool m_StartEditOnSet = true;
-
-        [SerializeField]
-        private InputActionProperty m_SetEditObject;
-
+        
         private GameObject m_EditObject;
         private IEditTool m_EditTool;
+        private IToggle m_InputToggle;
         private Vector3 m_InitialPosition;
         private Quaternion m_InitialRotation;
 
         private IXRSelectInteractable m_Interactable;
-
-        private bool m_IsRunning;
-
+        
         /// <summary>
         /// The interactor responsible for selecting the object to be interested.
         /// </summary>
@@ -48,36 +44,42 @@ namespace XRC.Core
         /// <summary>
         /// The game object that is being edited. This is provided by the interactor.
         /// </summary>
+        
         public GameObject editObject => m_EditObject;
-
-        private void Start()
-        {
-            m_EditTool = GetComponent<IEditTool>();
-            m_SetEditObject.action.performed += _ => ToggleRun();
-        }
+        
 
         private void OnEnable()
         {
-            m_SetEditObject.action.Enable();
+            
+            m_EditTool = GetComponent<IEditTool>();
+
+            m_InputToggle = GetComponent<IToggle>();
+
+            if (m_InputToggle != null)
+            {
+                m_InputToggle.onToggle += ToggleEditObject;
+            }
+            else
+            {
+                Debug.LogWarning("EditObjectProvider : OnEnable : m_InputToggle is null");
+            }
             m_Interactor.selectEntered.AddListener(OnSelectEntered);
         }
 
         private void OnDisable()
         {
-            m_SetEditObject.action.Disable();
+            if (m_InputToggle != null)
+            {
+                m_InputToggle.onToggle -= ToggleEditObject;
+            }
+
             m_Interactor.selectEntered.RemoveListener(OnSelectEntered);
         }
-
-        /// <summary>
-        /// Boolean indicating whether 
-        /// </summary>
-        public bool isRunning => m_IsRunning;
-
-        public void StartRun()
+        
+        public void ProvideEditObject()
         {
             if (m_Interactor.hasSelection)
             {
-                m_IsRunning = true;
 
                 // Get the most recently selected interactable
                 var interactables = m_Interactor.interactablesSelected;
@@ -106,16 +108,15 @@ namespace XRC.Core
             }
         }
 
-        public void StopRun()
+        public void RemoveEditObject()
         {
-            m_IsRunning = false;
-            
             ((XRGrabInteractable)m_Interactable).enabled = true;
 
             m_EditObject = null;
             if (m_StartEditOnSet)
             {
                 m_EditTool.StopRun();
+                m_EditTool.editObject = null;
             }
         }
 
@@ -126,15 +127,16 @@ namespace XRC.Core
             m_InitialRotation = interactable.transform.rotation;
         }
         
-        public void ToggleRun()
+        public void ToggleEditObject(bool isEditing)
         {
-            if (!m_IsRunning)
+            
+            if(isEditing)
             {
-                StartRun();
+                ProvideEditObject();
             }
             else
             {
-                StopRun();
+                RemoveEditObject();
             }
         }
 

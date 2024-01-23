@@ -53,14 +53,21 @@ namespace XRC.Core
         public void StartRun()
         {
             m_IsRunning = true;
-            m_Scale = editObject.transform.localScale;
+            if (m_EditObject)
+            {
+                m_Scale = m_EditObject.transform.localScale;
+            }
+            else
+            {
+                Debug.LogWarning("No edit object assigned to ScaleToolSimple");
+                
+            }
             runStarted?.Invoke();
         }
 
         public void StopRun()
         {
             m_IsRunning = false;
-            m_EditObject = null;
             runStopped?.Invoke();
         }
 
