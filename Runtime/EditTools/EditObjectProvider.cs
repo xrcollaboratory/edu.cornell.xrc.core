@@ -34,7 +34,7 @@ namespace XRC.Core
 
         private IXRSelectInteractable m_Interactable;
 
-        private bool m_IsRunning;
+        private bool m_IsOn;
 
         /// <summary>
         /// The interactor responsible for selecting the object to be interested.
@@ -71,13 +71,13 @@ namespace XRC.Core
         /// <summary>
         /// Boolean indicating whether 
         /// </summary>
-        public bool isRunning => m_IsRunning;
+        public bool isOn => m_IsOn;
 
         public void StartRun()
         {
             if (m_Interactor.hasSelection)
             {
-                m_IsRunning = true;
+                m_IsOn = true;
 
                 // Get the most recently selected interactable
                 var interactables = m_Interactor.interactablesSelected;
@@ -108,7 +108,7 @@ namespace XRC.Core
 
         public void StopRun()
         {
-            m_IsRunning = false;
+            m_IsOn = false;
             
             ((XRGrabInteractable)m_Interactable).enabled = true;
 
@@ -128,7 +128,7 @@ namespace XRC.Core
         
         public void ToggleRun()
         {
-            if (!m_IsRunning)
+            if (!m_IsOn)
             {
                 StartRun();
             }

@@ -22,11 +22,13 @@ namespace XRC.Core
             set => m_EditObject = value;
         }
         
-        private bool m_IsRunning;
+        private bool m_IsOn;
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
-        public bool isRunning => m_IsRunning;
+        public bool isOn => m_IsOn;
+        
+
         
         [SerializeField]
         private Vector3 m_Scale = Vector3.one;
@@ -44,7 +46,7 @@ namespace XRC.Core
         private void Update()
         {
             
-            if (!(m_EditObject == null) && m_IsRunning)
+            if (!(m_EditObject == null) && m_IsOn)
             {
                 m_EditObject.transform.localScale = m_Scale;
             }
@@ -52,21 +54,22 @@ namespace XRC.Core
 
         public void StartRun()
         {
-            m_IsRunning = true;
+            m_IsOn = true;
             m_Scale = editObject.transform.localScale;
             runStarted?.Invoke();
         }
 
         public void StopRun()
         {
-            m_IsRunning = false;
+            m_IsOn = false;
             m_EditObject = null;
             runStopped?.Invoke();
         }
 
+
         public void ToggleRun()
         {
-            if (!m_IsRunning)
+            if (!m_IsOn)
             {
                 StartRun();
             }

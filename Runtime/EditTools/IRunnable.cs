@@ -7,13 +7,8 @@ namespace XRC.Core
     /// <remarks>
     /// An example of a tool with a run condition is the XRC Color Tool, which is running when an object's color is being updated by the tool.
     /// </remarks>
-    public interface IRunnable
+    public interface IRunnable : IToggle
     {
-        /// <summary>
-        /// Whether the tool is running or not.
-        /// </summary>
-        public bool isRunning { get;}
-
         /// <summary>
         /// Start running the tool.
         /// </summary>
@@ -24,9 +19,6 @@ namespace XRC.Core
         /// </summary>
         public void StopRun();
 
-        /// <summary>
-        /// Toggle the run condition
-        /// </summary>
-        public void ToggleRun();
+
     }
 }

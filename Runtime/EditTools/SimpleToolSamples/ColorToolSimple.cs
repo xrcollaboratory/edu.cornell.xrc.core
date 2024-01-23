@@ -17,12 +17,12 @@ namespace XRC.Core
             set => m_EditObject = value;
         }
 
-        private bool m_IsRunning;
+        private bool m_IsOn;
 
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
-        public bool isRunning => m_IsRunning;
+        public bool isOn => m_IsOn;
 
         [SerializeField]
         private Color m_Color;
@@ -40,7 +40,7 @@ namespace XRC.Core
         private void Update()
         {
             // if (m_IsRunning && m_EditObject != null)
-            if (!(m_EditObject == null) && m_IsRunning)
+            if (!(m_EditObject == null) && m_IsOn)
             {
                 m_Material.color = m_Color;
             }
@@ -59,7 +59,7 @@ namespace XRC.Core
             m_Material = m_EditObject.GetComponent<MeshRenderer>().material;
             m_Color = m_Material.color;
 
-            m_IsRunning = true;
+            m_IsOn = true;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace XRC.Core
             m_EditObject = null;
             m_Color = Color.black;
 
-            m_IsRunning = false;
+            m_IsOn = false;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace XRC.Core
         /// </summary>
         public void ToggleRun()
         {
-            if (!m_IsRunning)
+            if (!m_IsOn)
             {
                 StartRun();
             }
