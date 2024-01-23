@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace XRC.Core
 {
-    public class ScaleToolSimple : MonoBehaviour, IEditTool
+    public class ScaleToolSimple : MonoBehaviour, IEditTool, IToggle
     {
         public event Action runStarted;
         public event Action runStopped;
@@ -22,13 +22,11 @@ namespace XRC.Core
             set => m_EditObject = value;
         }
         
-        private bool m_IsOn;
+        private bool m_IsRunning;
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
-        public bool isOn => m_IsOn;
-        
-
+        public bool isRunning => m_IsRunning;
         
         [SerializeField]
         private Vector3 m_Scale = Vector3.one;
@@ -46,7 +44,7 @@ namespace XRC.Core
         private void Update()
         {
             
-            if (!(m_EditObject == null) && m_IsOn)
+            if (!(m_EditObject == null) && m_IsRunning)
             {
                 m_EditObject.transform.localScale = m_Scale;
             }
@@ -54,22 +52,27 @@ namespace XRC.Core
 
         public void StartRun()
         {
-            m_IsOn = true;
+            m_IsRunning = true;
             m_Scale = editObject.transform.localScale;
             runStarted?.Invoke();
         }
 
         public void StopRun()
         {
-            m_IsOn = false;
+            m_IsRunning = false;
             m_EditObject = null;
             runStopped?.Invoke();
         }
 
+        public event Action onToggle;
+
+        public bool isOn { get; }
 
         public void ToggleRun()
         {
-            if (!m_IsOn)
+            
+            
+            if (!m_IsRunning)
             {
                 StartRun();
             }
@@ -77,6 +80,9 @@ namespace XRC.Core
             {
                 StopRun();
             }
+            
+            onToggle?.Invoke();
+
         }
     }
 }

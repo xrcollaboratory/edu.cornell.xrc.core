@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace XRC.Core
 {
-    public class ColorToolSimple : MonoBehaviour, IEditTool
+    public class ColorToolSimple : MonoBehaviour, IEditTool, IToggle
     {
         [SerializeField]
         private GameObject m_EditObject;
@@ -18,6 +18,8 @@ namespace XRC.Core
         }
 
         private bool m_IsOn;
+
+        public event Action onToggle;
 
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
@@ -45,6 +47,8 @@ namespace XRC.Core
                 m_Material.color = m_Color;
             }
         }
+
+        public bool isRunning { get; }
 
         /// <summary>
         /// Starts running the tool and prepares for color editing. Gets the material color of the edit object and sets the component's <see cref="color"/> to its value.

@@ -1,3 +1,5 @@
+using System;
+
 namespace XRC.Core
 {
     /// <summary>
@@ -11,12 +13,15 @@ namespace XRC.Core
     public interface IToggle
     {
         /// <summary>
+        /// Event that is triggered when the toggle action has been invoked.
+        /// </summary>
+        public event Action onToggle;       
+        
+        /// <summary>
         /// Whether the tool is running or not.
         /// </summary>
         bool isOn { get; }
-
-
-
+        
         /// <summary>
         /// Toggle the run condition
         /// </summary>

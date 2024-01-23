@@ -24,17 +24,20 @@ namespace XRC.Core
         [SerializeField]
         private bool m_StartEditOnSet = true;
 
-        [SerializeField]
-        private InputActionProperty m_SetEditObject;
+        // [SerializeField]
+        // private InputActionProperty m_SetEditObject;
 
         private GameObject m_EditObject;
         private IEditTool m_EditTool;
+        private IToggle m_ToggleComponent;
         private Vector3 m_InitialPosition;
         private Quaternion m_InitialRotation;
 
         private IXRSelectInteractable m_Interactable;
 
+
         private bool m_IsOn;
+        private bool m_IsRunning;
 
         /// <summary>
         /// The interactor responsible for selecting the object to be interested.
@@ -53,18 +56,24 @@ namespace XRC.Core
         private void Start()
         {
             m_EditTool = GetComponent<IEditTool>();
-            m_SetEditObject.action.performed += _ => ToggleRun();
+            // m_SetEditObject.action.performed += _ => ToggleRun();
+            m_ToggleComponent = GetComponent<IToggle>();
+            
+            
         }
 
         private void OnEnable()
         {
-            m_SetEditObject.action.Enable();
+            // m_SetEditObject.action.Enable();
+            if(m_ToggleComponent != null) m_ToggleComponent.onToggle += ToggleRun; 
             m_Interactor.selectEntered.AddListener(OnSelectEntered);
+
         }
 
         private void OnDisable()
         {
-            m_SetEditObject.action.Disable();
+            // m_SetEditObject.action.Disable();
+            if(m_ToggleComponent != null) m_ToggleComponent.onToggle -= ToggleRun; 
             m_Interactor.selectEntered.RemoveListener(OnSelectEntered);
         }
 
@@ -73,11 +82,12 @@ namespace XRC.Core
         /// </summary>
         public bool isOn => m_IsOn;
 
+        public bool isRunning => m_IsRunning;
         public void StartRun()
         {
             if (m_Interactor.hasSelection)
             {
-                m_IsOn = true;
+                m_IsRunning = true;
 
                 // Get the most recently selected interactable
                 var interactables = m_Interactor.interactablesSelected;
@@ -108,7 +118,7 @@ namespace XRC.Core
 
         public void StopRun()
         {
-            m_IsOn = false;
+            m_IsRunning = false;
             
             ((XRGrabInteractable)m_Interactable).enabled = true;
 
@@ -128,7 +138,7 @@ namespace XRC.Core
         
         public void ToggleRun()
         {
-            if (!m_IsOn)
+            if (!m_IsRunning)
             {
                 StartRun();
             }
@@ -136,6 +146,9 @@ namespace XRC.Core
             {
                 StopRun();
             }
+
+            // Make sure the toggle action is in the correct state
+            m_IsOn = m_IsRunning;
         }
 
       
