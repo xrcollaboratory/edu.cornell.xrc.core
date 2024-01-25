@@ -1,3 +1,5 @@
+using System;
+
 namespace XRC.Core
 {
     /// <summary>
@@ -9,6 +11,13 @@ namespace XRC.Core
     /// </remarks>
     public interface IRunnable
     {
+        
+        /// <summary>
+        /// Action that is invoked with the current running state.
+        /// </summary>
+        public event Action<bool> onToggle;
+        
+        
         /// <summary>
         /// Whether the tool is running or not.
         /// </summary>

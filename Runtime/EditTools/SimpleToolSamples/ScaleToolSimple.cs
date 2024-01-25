@@ -23,6 +23,8 @@ namespace XRC.Core
         }
         
         private bool m_IsRunning;
+        public event Action<bool> onToggle;
+
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
@@ -63,12 +65,16 @@ namespace XRC.Core
                 
             }
             runStarted?.Invoke();
+            onToggle?.Invoke(isRunning);
+
         }
 
         public void StopRun()
         {
             m_IsRunning = false;
             runStopped?.Invoke();
+            onToggle?.Invoke(isRunning);
+
         }
 
         public void ToggleRun()

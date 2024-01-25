@@ -26,7 +26,6 @@ namespace XRC.Core
         
         private GameObject m_EditObject;
         private IEditTool m_EditTool;
-        private IToggle m_InputToggle;
         private Vector3 m_InitialPosition;
         private Quaternion m_InitialRotation;
 
@@ -53,24 +52,23 @@ namespace XRC.Core
             
             m_EditTool = GetComponent<IEditTool>();
 
-            m_InputToggle = GetComponent<IToggle>();
 
-            if (m_InputToggle != null)
+            if (m_EditTool != null)
             {
-                m_InputToggle.onToggle += ToggleEditObject;
+                m_EditTool.onToggle += ToggleEditObject;
             }
             else
             {
-                Debug.LogWarning("EditObjectProvider : OnEnable : m_InputToggle is null");
+                Debug.LogWarning("EditObjectProvider : OnEnable : m_EditTool is null");
             }
             m_Interactor.selectEntered.AddListener(OnSelectEntered);
         }
 
         private void OnDisable()
         {
-            if (m_InputToggle != null)
+            if (m_EditTool != null)
             {
-                m_InputToggle.onToggle -= ToggleEditObject;
+                m_EditTool.onToggle -= ToggleEditObject;
             }
 
             m_Interactor.selectEntered.RemoveListener(OnSelectEntered);

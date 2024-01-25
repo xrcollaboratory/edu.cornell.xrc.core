@@ -19,6 +19,8 @@ namespace XRC.Core
 
         private bool m_IsRunning;
 
+        public event Action<bool> onToggle;
+
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
@@ -60,6 +62,8 @@ namespace XRC.Core
             m_Color = m_Material.color;
 
             m_IsRunning = true;
+            onToggle?.Invoke(isRunning);
+
         }
 
         /// <summary>
@@ -71,6 +75,8 @@ namespace XRC.Core
             m_Color = Color.black;
 
             m_IsRunning = false;
+            onToggle?.Invoke(isRunning);
+
         }
 
         /// <summary>
