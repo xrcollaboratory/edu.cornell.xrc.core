@@ -87,5 +87,8 @@ namespace XRC.Core
                 StopRun();
             }
         }
+
+        public event Action runStopped;
+        public event Action runStarted;
     }
 }

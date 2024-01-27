@@ -1,3 +1,5 @@
+using System;
+
 namespace XRC.Core
 {
     /// <summary>
@@ -28,5 +30,21 @@ namespace XRC.Core
         /// Toggle the run condition
         /// </summary>
         public void ToggleRun();
+        
+        
+        public event Action runStopped;
+        public event Action runStarted;
+
+        public void ToggleRunDefault()
+        {
+            if (isRunning)
+            {
+                StopRun();
+            }
+            else
+            {
+                StartRun();
+            }
+        }
     }
 }

@@ -109,7 +109,7 @@ namespace XRC.Core
         public void StopRun()
         {
             m_IsRunning = false;
-            
+
             ((XRGrabInteractable)m_Interactable).enabled = true;
 
             m_EditObject = null;
@@ -125,7 +125,7 @@ namespace XRC.Core
             m_InitialPosition = interactable.transform.position;
             m_InitialRotation = interactable.transform.rotation;
         }
-        
+
         public void ToggleRun()
         {
             if (!m_IsRunning)
@@ -138,6 +138,7 @@ namespace XRC.Core
             }
         }
 
-      
+        public event Action runStopped;
+        public event Action runStarted;
     }
 }
