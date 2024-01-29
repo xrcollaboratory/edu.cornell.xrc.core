@@ -34,17 +34,11 @@ namespace XRC.Core
         private Quaternion m_InitialRotation;
         private IXRSelectInteractable m_Interactable;
         private bool m_IsEditing;
-
-        [SerializeField]
-        private GameObject m_LastSelectedObject;
-        
         
         /// <summary>
         /// Event action when an object is scaled along X axis.
         /// </summary>
         public static event Action<GameObject> objectSelected; 
-        
-        
         
         /// <summary>
         /// The interactor responsible for selecting the object to be interested.
@@ -88,13 +82,9 @@ namespace XRC.Core
             }
             m_Interactor.selectEntered.AddListener(OnSelectEntered);
             m_Interactor.selectExited.AddListener(OnSelectExited);
-            EditObjectProvider.objectSelected += OnObjectSelected;
         }
 
-        private void OnObjectSelected(GameObject obj)
-        {
-            m_LastSelectedObject = obj;
-        }
+   
 
         private void OnDisable()
         {
@@ -105,7 +95,6 @@ namespace XRC.Core
             
             m_Interactor.selectEntered.RemoveListener(OnSelectEntered);
             m_Interactor.selectExited.RemoveListener(OnSelectExited);
-            EditObjectProvider.objectSelected -= OnObjectSelected;
 
         }
         
@@ -113,7 +102,7 @@ namespace XRC.Core
         /// <summary>
         /// Provide the edit object to the edit tool.
         /// </summary>
-        public void StartRun()
+        public void ProvideEditObject()
         {
             //Debug.Log("Providing Edit Object." + m_Interactor.hasSelection);
             if (m_Interactor.hasSelection)
@@ -151,7 +140,6 @@ namespace XRC.Core
                     if(m_EditObject == null)
                     {
                         Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditObject is null");
-                        m_EditObject = m_LastSelectedObject;
                     }
       
                     m_EditTool.editObject = m_EditObject;
@@ -174,7 +162,6 @@ namespace XRC.Core
                     if(m_EditObject == null)
                     {
                         Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditObject is null");
-                        m_EditObject = m_LastSelectedObject;
                     }
                     
                     
@@ -195,16 +182,9 @@ namespace XRC.Core
         /// <summary>
         /// Remove the edit object from the edit tool.
         /// </summary>
-        public void StopRun()
+        public void RemoveEditObject()
         {
-
-            if(m_EditObject == null)
-            {
-                Debug.Log("EditObjectProvider : RemoveEditObject : m_EditObject is null, use last selected. " + m_LastSelectedObject.name);
-                // Get the game object containing the selected interactable
-                m_EditObject = m_LastSelectedObject.transform.gameObject;
-
-            }
+            
             
             // Check for null
             if (m_EditObject == null)
@@ -218,10 +198,6 @@ namespace XRC.Core
             m_EditObject.GetComponent<XRGrabInteractable>().enabled = true;
             if (m_StartEditOnSet)
             {
-                
-                
-
-                
                 Debug.Log(this.name +"EditObjectProvider : RemoveEditObject : StopRun");
                 if (m_EditTool != null)
                 {
@@ -258,11 +234,11 @@ namespace XRC.Core
             isEditing = isEdit;
             if(isEdit)
             {
-                StartRun();
+                ProvideEditObject();
             }
             else
             {
-                StopRun();
+                RemoveEditObject();
             }
         }
     }
