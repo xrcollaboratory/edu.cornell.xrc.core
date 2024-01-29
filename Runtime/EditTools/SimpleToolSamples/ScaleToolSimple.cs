@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace XRC.Core
 {
-    public class ScaleToolSimple : MonoBehaviour, IEditTool, IToggle
+    public class ScaleToolSimple : MonoBehaviour, IEditTool
     {
         public event Action runStarted;
         public event Action runStopped;
@@ -21,8 +21,12 @@ namespace XRC.Core
             get => m_EditObject;
             set => m_EditObject = value;
         }
-        
+
+        public EditObjectProvider editObjectProvider { get; set; }
+
         private bool m_IsRunning;
+        public event Action<bool> toggled;
+
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
@@ -53,25 +57,30 @@ namespace XRC.Core
         public void StartRun()
         {
             m_IsRunning = true;
-            m_Scale = editObject.transform.localScale;
+            if (m_EditObject)
+            {
+                m_Scale = m_EditObject.transform.localScale;
+            }
+            else
+            {
+                Debug.LogWarning("No edit object assigned to ScaleToolSimple");
+                
+            }
             runStarted?.Invoke();
+            // toggled?.Invoke(isRunning);
+
         }
 
         public void StopRun()
         {
             m_IsRunning = false;
-            m_EditObject = null;
             runStopped?.Invoke();
+            // toggled?.Invoke(isRunning);
+
         }
-
-        public event Action onToggle;
-
-        public bool isOn { get; }
 
         public void ToggleRun()
         {
-            
-            
             if (!m_IsRunning)
             {
                 StartRun();
@@ -80,9 +89,6 @@ namespace XRC.Core
             {
                 StopRun();
             }
-            
-            onToggle?.Invoke();
-
         }
     }
 }

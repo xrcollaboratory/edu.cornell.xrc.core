@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace XRC.Core
 {
-    public class ColorToolSimple : MonoBehaviour, IEditTool, IToggle
+    public class ColorToolSimple : MonoBehaviour, IEditTool
     {
         [SerializeField]
         private GameObject m_EditObject;
@@ -17,14 +17,16 @@ namespace XRC.Core
             set => m_EditObject = value;
         }
 
-        private bool m_IsOn;
+        public EditObjectProvider editObjectProvider { get; set; }
 
-        public event Action onToggle;
+        private bool m_IsRunning;
+
+        public event Action<bool> toggled;
 
         /// <summary>
         /// Indicates whether the tool is currently running or not. 
         /// </summary>
-        public bool isOn => m_IsOn;
+        public bool isRunning => m_IsRunning;
 
         [SerializeField]
         private Color m_Color;
@@ -42,13 +44,11 @@ namespace XRC.Core
         private void Update()
         {
             // if (m_IsRunning && m_EditObject != null)
-            if (!(m_EditObject == null) && m_IsOn)
+            if (!(m_EditObject == null) && m_IsRunning)
             {
                 m_Material.color = m_Color;
             }
         }
-
-        public bool isRunning { get; }
 
         /// <summary>
         /// Starts running the tool and prepares for color editing. Gets the material color of the edit object and sets the component's <see cref="color"/> to its value.
@@ -63,7 +63,9 @@ namespace XRC.Core
             m_Material = m_EditObject.GetComponent<MeshRenderer>().material;
             m_Color = m_Material.color;
 
-            m_IsOn = true;
+            m_IsRunning = true;
+            toggled?.Invoke(isRunning);
+
         }
 
         /// <summary>
@@ -71,10 +73,12 @@ namespace XRC.Core
         /// </summary>
         public void StopRun()
         {
-            m_EditObject = null;
+            // m_EditObject = null;
             m_Color = Color.black;
 
-            m_IsOn = false;
+            m_IsRunning = false;
+            toggled?.Invoke(isRunning);
+
         }
 
         /// <summary>
@@ -82,7 +86,7 @@ namespace XRC.Core
         /// </summary>
         public void ToggleRun()
         {
-            if (!m_IsOn)
+            if (!m_IsRunning)
             {
                 StartRun();
             }
