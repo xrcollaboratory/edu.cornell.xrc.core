@@ -34,6 +34,17 @@ namespace XRC.Core
         private Quaternion m_InitialRotation;
         private IXRSelectInteractable m_Interactable;
         private bool m_IsEditing;
+
+        [SerializeField]
+        private GameObject m_LastSelectedObject;
+        
+        
+        /// <summary>
+        /// Event action when an object is scaled along X axis.
+        /// </summary>
+        public static event Action<GameObject> objectSelected; 
+        
+        
         
         /// <summary>
         /// The interactor responsible for selecting the object to be interested.
@@ -73,12 +84,18 @@ namespace XRC.Core
             }
             else
             {
-                Debug.LogWarning("EditObjectProvider : OnEnable : m_EditTool is null");
+                Debug.LogWarning(this.name +"EditObjectProvider : OnEnable : m_EditTool is null");
             }
             m_Interactor.selectEntered.AddListener(OnSelectEntered);
             m_Interactor.selectExited.AddListener(OnSelectExited);
+            EditObjectProvider.objectSelected += OnObjectSelected;
         }
-        
+
+        private void OnObjectSelected(GameObject obj)
+        {
+            m_LastSelectedObject = obj;
+        }
+
         private void OnDisable()
         {
             if (m_EditTool != null)
@@ -88,6 +105,7 @@ namespace XRC.Core
             
             m_Interactor.selectEntered.RemoveListener(OnSelectEntered);
             m_Interactor.selectExited.RemoveListener(OnSelectExited);
+            EditObjectProvider.objectSelected -= OnObjectSelected;
 
         }
         
@@ -95,15 +113,15 @@ namespace XRC.Core
         /// <summary>
         /// Provide the edit object to the edit tool.
         /// </summary>
-        public void ProvideEditObject()
+        public void StartRun()
         {
-            
+            //Debug.Log("Providing Edit Object." + m_Interactor.hasSelection);
             if (m_Interactor.hasSelection)
             {
                 // Get the most recently selected interactable
                 var interactables = m_Interactor.interactablesSelected;
                 m_Interactable = interactables[interactables.Count - 1];
-                ((XRGrabInteractable)m_Interactable).enabled = false;
+     
 
                 // Get the game object containing the selected interactable
                 m_EditObject = m_Interactable.transform.gameObject;
@@ -111,6 +129,9 @@ namespace XRC.Core
                 // Deselect the object and disable the interactable so it can't be selected while the object is a target object
                 m_Interactor.interactionManager.CancelInteractableSelection(m_Interactable);
                 
+                
+                // Debug.Log("Disabling Interactable.");
+                ((XRGrabInteractable)m_Interactable).enabled = false;
                 
                 if (m_SnapBack)
                 {
@@ -121,10 +142,18 @@ namespace XRC.Core
 
                 if(m_EditTool == null)
                 {
-                    Debug.LogWarning("EditObjectProvider : ProvideEditObject : m_EditTool is null");
+                    Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditTool is null");
                 }
                 else
                 {
+                    Debug.Log(this.name + "EditObjectProvider : ProvideEditObject : StartRun");
+
+                    if(m_EditObject == null)
+                    {
+                        Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditObject is null");
+                        m_EditObject = m_LastSelectedObject;
+                    }
+      
                     m_EditTool.editObject = m_EditObject;
                     if (m_StartEditOnSet)
                     {
@@ -134,39 +163,85 @@ namespace XRC.Core
                 }
                 
             }
+            else
+            {
+                if(m_EditTool == null)
+                {
+                    Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditTool is null");
+                }
+                else
+                {
+                    if(m_EditObject == null)
+                    {
+                        Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditObject is null");
+                        m_EditObject = m_LastSelectedObject;
+                    }
+                    
+                    
+                    m_EditTool.editObject = m_EditObject;
+                    if (m_StartEditOnSet)
+                    {
+                        m_EditObject.GetComponent<XRGrabInteractable>().enabled = false;
+                        Debug.Log(this.name +"EditObjectProvider : ProvideEditObject : StartRun");
+
+                        m_EditTool.StartRun();
+                    }
+                    
+                }
+
+            }
         }
 
         /// <summary>
         /// Remove the edit object from the edit tool.
         /// </summary>
-        public void RemoveEditObject()
+        public void StopRun()
         {
+
             if(m_EditObject == null)
             {
-                Debug.Log("EditObjectProvider : RemoveEditObject : m_EditObject is null");
+                Debug.Log("EditObjectProvider : RemoveEditObject : m_EditObject is null, use last selected. " + m_LastSelectedObject.name);
+                // Get the game object containing the selected interactable
+                m_EditObject = m_LastSelectedObject.transform.gameObject;
+
+            }
+            
+            // Check for null
+            if (m_EditObject == null)
+            {
+                Debug.LogError("StartRun : This should not happen!!!!");
                 return;
             }
-
+            
+            
+            Debug.Log(this.name +"Enabling Interactable.");
             m_EditObject.GetComponent<XRGrabInteractable>().enabled = true;
             if (m_StartEditOnSet)
             {
-                Debug.Log("EditObjectProvider : RemoveEditObject : StopRun");
+                
+                
+
+                
+                Debug.Log(this.name +"EditObjectProvider : RemoveEditObject : StopRun");
                 if (m_EditTool != null)
                 {
                     m_EditTool.StopRun();
 
                 }
             }
-            ((XRGrabInteractable)m_Interactable).enabled = true;
         }
 
         private void OnSelectEntered(SelectEnterEventArgs args)
         {
+            
+            Debug.Log(this.name + " OnSelectEntered"+ args.interactableObject.transform.gameObject.name  );
             var interactable = args.interactableObject;
             if (interactable.transform.gameObject.name.Contains("Handle")) return;
             
             m_InitialPosition = interactable.transform.position;
             m_InitialRotation = interactable.transform.rotation;
+            
+            objectSelected?.Invoke(interactable.transform.gameObject);
         }
         
         private void OnSelectExited(SelectExitEventArgs arg0)
@@ -183,11 +258,11 @@ namespace XRC.Core
             isEditing = isEdit;
             if(isEdit)
             {
-                ProvideEditObject();
+                StartRun();
             }
             else
             {
-                RemoveEditObject();
+                StopRun();
             }
         }
     }
