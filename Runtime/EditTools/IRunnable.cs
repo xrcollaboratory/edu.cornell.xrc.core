@@ -32,6 +32,11 @@ namespace XRC.Core
         /// End running the tool.
         /// </summary>
         public void StopRun();
+        
+        /// <summary>
+        /// Toggle the tool.
+        /// </summary>
+        public void ToggleRun();
 
 
     }

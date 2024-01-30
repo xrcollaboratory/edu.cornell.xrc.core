@@ -25,6 +25,11 @@ namespace XRC.Core
         [SerializeField]
         private bool m_StartEditOnSet = true;
         
+        
+        // [SerializeField]
+        // private InputActionProperty m_SetEditObject;
+        
+        
         [SerializeField]
         private GameObject m_EditObject;
         
@@ -33,7 +38,7 @@ namespace XRC.Core
         private Vector3 m_InitialPosition;
         private Quaternion m_InitialRotation;
         private IXRSelectInteractable m_Interactable;
-        private bool m_IsEditing;
+        private bool m_IsRunning;
         
         /// <summary>
         /// Event action when an object is scaled along X axis.
@@ -58,19 +63,25 @@ namespace XRC.Core
             set => m_EditObject = value;
         }
 
-        public bool isEditing
+        public bool isRunning
         {
-            get => m_IsEditing;
-            set => m_IsEditing = value;
+            get => m_IsRunning;
+            set => m_IsRunning = value;
         }
 
         private void Start()
         {
             m_EditTool = GetComponent<IEditTool>();
+            // m_SetEditObject.action.performed += _ => ToggleRun();
+
         }
         
         private void OnEnable()
         {
+            
+            // m_SetEditObject.action.Enable();
+
+            
             m_EditTool = GetComponent<IEditTool>();
             if (m_EditTool != null)
             {
@@ -88,6 +99,9 @@ namespace XRC.Core
 
         private void OnDisable()
         {
+            
+            // m_SetEditObject.action.Disable();
+
             if (m_EditTool != null)
             {
                 m_EditTool.toggled -= ToggleRun;
@@ -102,7 +116,7 @@ namespace XRC.Core
         /// <summary>
         /// Provide the edit object to the edit tool.
         /// </summary>
-        public void ProvideEditObject()
+        public void StartRun()
         {
             //Debug.Log("Providing Edit Object." + m_Interactor.hasSelection);
             if (m_Interactor.hasSelection)
@@ -119,7 +133,8 @@ namespace XRC.Core
                 m_Interactor.interactionManager.CancelInteractableSelection(m_Interactable);
                 
                 
-                // Debug.Log("Disabling Interactable.");
+                Debug.Log(this.name +" Disabling Interactable.");
+
                 ((XRGrabInteractable)m_Interactable).enabled = false;
                 
                 if (m_SnapBack)
@@ -135,7 +150,7 @@ namespace XRC.Core
                 }
                 else
                 {
-                    Debug.Log(this.name + "EditObjectProvider : ProvideEditObject : StartRun");
+                    // Debug.Log(this.name + "EditObjectProvider : ProvideEditObject : StartRun");
 
                     if(m_EditObject == null)
                     {
@@ -143,10 +158,7 @@ namespace XRC.Core
                     }
       
                     m_EditTool.editObject = m_EditObject;
-                    if (m_StartEditOnSet)
-                    {
-                        m_EditTool.StartRun();
-                    }
+
                     
                 }
                 
@@ -169,9 +181,7 @@ namespace XRC.Core
                     if (m_StartEditOnSet)
                     {
                         m_EditObject.GetComponent<XRGrabInteractable>().enabled = false;
-                        Debug.Log(this.name +"EditObjectProvider : ProvideEditObject : StartRun");
 
-                        m_EditTool.StartRun();
                     }
                     
                 }
@@ -182,29 +192,22 @@ namespace XRC.Core
         /// <summary>
         /// Remove the edit object from the edit tool.
         /// </summary>
-        public void RemoveEditObject()
+        public void StopRun()
         {
             
             
             // Check for null
             if (m_EditObject == null)
             {
-                Debug.LogError("StartRun : This should not happen!!!!");
+                // It happens when input moderation calls StopRun on a tool before the object has been selected. 
+                // Debug.LogError("StartRun : This should not happen!!!!");
                 return;
             }
             
             
-            Debug.Log(this.name +"Enabling Interactable.");
+            Debug.Log(this.name +" Enabling Interactable.");
             m_EditObject.GetComponent<XRGrabInteractable>().enabled = true;
-            if (m_StartEditOnSet)
-            {
-                Debug.Log(this.name +"EditObjectProvider : RemoveEditObject : StopRun");
-                if (m_EditTool != null)
-                {
-                    m_EditTool.StopRun();
 
-                }
-            }
         }
 
         private void OnSelectEntered(SelectEnterEventArgs args)
@@ -224,6 +227,21 @@ namespace XRC.Core
         {
             // m_EditObject = null;
         }
+        
+        
+        public void ToggleRun()
+        {
+            if (!m_IsRunning)
+            {
+                StartRun();
+            }
+            else
+            {
+                StopRun();
+            }
+        }
+        
+        
 
         /// <summary>
         /// Used to toggle the run condition of the edit tool.
@@ -231,14 +249,27 @@ namespace XRC.Core
         /// <param name="isEdit"></param>
         public void ToggleRun(bool isEdit)
         {
-            isEditing = isEdit;
+            isRunning = isEdit;
             if(isEdit)
             {
-                ProvideEditObject();
+                StartRun();
+                // if (m_StartEditOnSet)
+                // {
+                //     m_EditTool.StartRun();
+                // }
             }
             else
             {
-                RemoveEditObject();
+                StopRun();
+                // if (m_StartEditOnSet)
+                // {
+                //     Debug.Log(this.name +"EditObjectProvider : RemoveEditObject : StopRun");
+                //     // if (m_EditTool != null)
+                //     // {
+                //     //     m_EditTool.StopRun();
+                //     //
+                //     // }
+                // }
             }
         }
     }
