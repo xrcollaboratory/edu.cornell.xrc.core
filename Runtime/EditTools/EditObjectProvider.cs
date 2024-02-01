@@ -70,6 +70,10 @@ namespace XRC.Core
             }
         }
 
+        
+        /// <summary>
+        /// Indicates whether the tool is currently running or not.
+        /// </summary>
         public bool isRunning
         {
             get => m_IsRunning;
@@ -112,7 +116,9 @@ namespace XRC.Core
         
         
         /// <summary>
-        /// Provide the edit object to the edit tool.
+        /// Start the edit tool and provide the edit object based on the recently selected interactable.
+        /// If the SnapBack property is set to true, the object will be moved back to its grabbed position and orientation.
+        /// If the StartEditOnSet property is set to true, the edit tool will be started immediately after the object has been set.
         /// </summary>
         public void StartRun()
         {
@@ -172,7 +178,8 @@ namespace XRC.Core
         }
 
         /// <summary>
-        /// Remove the edit object from the edit tool.
+        /// Remove the edit object from the edit tool and enables the interactable so it can be selected again.
+        /// Stops the run on the edit tool. 
         /// </summary>
         public void StopRun()
         {
@@ -197,6 +204,9 @@ namespace XRC.Core
         }
         
         
+        /// <summary>
+        /// Toggles the run condition of the edit tool.
+        /// </summary>
         public void ToggleRun()
         {
             if (!m_IsRunning)
