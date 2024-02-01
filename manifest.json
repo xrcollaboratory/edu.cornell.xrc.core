@@ -2,6 +2,7 @@
   "sitemap": {
     "fileOptions": {
       "api/*": {
+        "baseUrl": "https://xrcollaboratory.github.io/edu.cornell.xrc.core/",
         "changefreq": "daily"
       }
     },
@@ -20,6 +21,66 @@
         }
       },
       "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Core.EditObjectProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Core.EditObjectProvider.html",
+          "hash": "N6puMGcefxt+RTrkAXInMqlNTSDedMENN7ZV5fUlzEU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Core.IEditTool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Core.IEditTool.html",
+          "hash": "dQfG1hY8VePxRWGsoBq2qV0SCjybKXmMve2vqYACMCU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Core.IRunnable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Core.IRunnable.html",
+          "hash": "mZ3537ih39CFmuwPhv/joLZxb4xeRwrMOXque8y2Q9o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Core.html",
+          "hash": "iccJwW40I25heEz+hPVb3baGELGjwNXOWvK4Po5ukAc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "KE0PfYMynnEaFQbiYOGNqgCW2sTcdyLBz8KsByYsrgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
     },
     {
       "type": "Conceptual",
@@ -144,7 +205,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "CJBCKob/u5177sf5p+P6KyhgBL34RLIqZkrIUKQTB+U="
+          "hash": "ygTFRuZhJm1winiqLvA6R9dH5wpdvBhF4PnKHj7V/Rk="
         }
       },
       "is_incremental": false,
@@ -163,6 +224,12 @@
       },
       "processors": {
         "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 4,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
