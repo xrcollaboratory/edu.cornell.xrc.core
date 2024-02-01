@@ -6,13 +6,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 namespace XRC.Core
 {
     /// <summary>
-    /// EditObjectProvider is a MonoBehaviour that provides functionality to select and interact with a target object.
+    /// The EditObjectProvider is designed to be used in conjunction with edit tools that implement the
+    /// IEditTool interface. It's primarily used in tools such as XRC Mesh Tool, XRC Scale Tool, and
+    /// XRC Color Tool.
+    /// The main functionality of this component is to provide these tools with the GameObject that needs to be edited.
     /// </summary>
-    /// <remarks>
-    /// This component is used in edit tools that implement the <see cref="IEditTool"/> interface, such as
-    /// XRC Mesh Tool, XRC Scale Tool, and XRC Color Tool, for providing the game object to be edited.
-    /// 
-    /// </remarks>
     public class EditObjectProvider : MonoBehaviour 
     {
         [SerializeField]
