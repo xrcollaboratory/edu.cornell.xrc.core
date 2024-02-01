@@ -39,10 +39,6 @@ namespace XRC.Core
         private IXRSelectInteractable m_Interactable;
         private bool m_IsRunning;
         
-        /// <summary>
-        /// Event action when an object is scaled along X axis.
-        /// </summary>
-        public static event Action<GameObject> objectSelected; 
         
         /// <summary>
         /// The interactor responsible for selecting the object to be interested.
@@ -200,7 +196,6 @@ namespace XRC.Core
             if (interactable.transform.gameObject.name.Contains("Handle")) return;
             m_InitialPosition = interactable.transform.position;
             m_InitialRotation = interactable.transform.rotation;
-            objectSelected?.Invoke(interactable.transform.gameObject);
         }
         
         
