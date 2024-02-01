@@ -179,11 +179,9 @@ namespace XRC.Core
         /// </summary>
         public void StopRun()
         {
-            
-            // Check for null
+            // Check for null, it can happen when input moderation calls StopRun on a tool before the object has been selected. 
             if (m_EditObject == null)
             {
-                // It happens when input moderation calls StopRun on a tool before the object has been selected. 
                 return;
             }
             m_EditObject.GetComponent<XRGrabInteractable>().enabled = true;
