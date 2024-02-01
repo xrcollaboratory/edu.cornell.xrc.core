@@ -21,6 +21,9 @@ namespace XRC.Core
 
         [SerializeField]
         private bool m_StartEditOnSet = true;
+
+        [SerializeField] 
+        private bool m_ToggleOnCancel = false;
         
         
         [SerializeField]
@@ -77,7 +80,16 @@ namespace XRC.Core
         private void Start()
         {
             m_EditTool = GetComponent<IEditTool>();
-            m_SetEditObject.action.performed += _ => ToggleRun();
+            
+            if (m_ToggleOnCancel)
+            {
+                m_SetEditObject.action.started += _ => ToggleRun();
+                m_SetEditObject.action.canceled += _ => ToggleRun();
+            }
+            else
+            {
+                m_SetEditObject.action.performed += _ => ToggleRun();
+            }
         }
 
         private void Update()
@@ -116,6 +128,7 @@ namespace XRC.Core
         /// </summary>
         public void StartRun()
         {
+            m_IsRunning = true; 
             if (m_Interactor.hasSelection)
             {
                 // Get the most recently selected interactable
@@ -176,7 +189,8 @@ namespace XRC.Core
         /// Stops the run on the edit tool. 
         /// </summary>
         public void StopRun()
-        {
+        {            
+            m_IsRunning = false; 
             // Check for null, it can happen when input moderation calls StopRun on a tool before the object has been selected. 
             if (m_EditObject == null)
             {
