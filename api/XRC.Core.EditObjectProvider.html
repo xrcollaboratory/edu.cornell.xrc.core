@@ -83,7 +83,10 @@
   
   <h1 id="XRC_Core_EditObjectProvider" data-uid="XRC.Core.EditObjectProvider" class="text-break">Class EditObjectProvider
   </h1>
-  <div class="markdown level0 summary"><p>EditObjectProvider is a MonoBehaviour that provides functionality to select and interact with a target object.</p>
+  <div class="markdown level0 summary"><p>The EditObjectProvider is designed to be used in conjunction with edit tools that implement the
+IEditTool interface. It&apos;s primarily used in tools such as XRC Mesh Tool, XRC Scale Tool, and
+XRC Color Tool.
+The main functionality of this component is to provide these tools with the GameObject that needs to be edited.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -97,10 +100,6 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class EditObjectProvider : MonoBehaviour</code></pre>
   </div>
-  <h5 id="XRC_Core_EditObjectProvider_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>This component is used in edit tools that implement the <a class="xref" href="XRC.Core.IEditTool.html">IEditTool</a> interface, such as
-XRC Mesh Tool, XRC Scale Tool, and XRC Color Tool, for providing the game object to be edited.</p>
-</div>
   <h3 id="properties">Properties
   </h3>
   <a id="XRC_Core_EditObjectProvider_editObject_" data-uid="XRC.Core.EditObjectProvider.editObject*"></a>
