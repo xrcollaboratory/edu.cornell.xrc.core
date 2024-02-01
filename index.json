@@ -1,24 +1,4 @@
 {
-  "api/XRC.Core.EditObjectProvider.html": {
-    "href": "api/XRC.Core.EditObjectProvider.html",
-    "title": "Class EditObjectProvider | XRC Core",
-    "keywords": "Class EditObjectProvider EditObjectProvider is a MonoBehaviour that provides functionality to select and interact with a target object. Inheritance Object EditObjectProvider Namespace : XRC.Core Assembly : cs.temp.dll.dll Syntax public class EditObjectProvider : MonoBehaviour Remarks This component is used in edit tools that implement the IEditTool interface, such as XRC Mesh Tool, XRC Scale Tool, and XRC Color Tool, for providing the game object to be edited. Properties editObject The object being edited. Anytime this property is set, the editObject of the EditTool is also set. Declaration public GameObject editObject { get; set; } Property Value Type Description GameObject interactor The interactor responsible for selecting the object to be interested. Declaration public XRBaseInteractor interactor { get; set; } Property Value Type Description XRBaseInteractor isRunning Indicates whether the tool is currently running or not. Declaration public bool isRunning { get; set; } Property Value Type Description Boolean Methods StartRun() Start the edit tool and provide the edit object based on the recently selected interactable. If the SnapBack property is set to true, the object will be moved back to its grabbed position and orientation. If the StartEditOnSet property is set to true, the edit tool will be started immediately after the object has been set. Declaration public void StartRun() StopRun() Remove the edit object from the edit tool and enables the interactable so it can be selected again. Stops the run on the edit tool. Declaration public void StopRun() ToggleRun() Toggles the run condition of the edit tool. Declaration public void ToggleRun()"
-  },
-  "api/XRC.Core.html": {
-    "href": "api/XRC.Core.html",
-    "title": "Namespace XRC.Core | XRC Core",
-    "keywords": "Namespace XRC.Core Classes EditObjectProvider EditObjectProvider is a MonoBehaviour that provides functionality to select and interact with a target object. Interfaces IEditTool An interface to be implemented by edit tools that require an object to edit. IRunnable Interface to be implemented by components, such as edit tools and interaction techniques, that have a distinct run condition. A run condition is where the tool, or technique, execute its primary tasks."
-  },
-  "api/XRC.Core.IEditTool.html": {
-    "href": "api/XRC.Core.IEditTool.html",
-    "title": "Interface IEditTool | XRC Core",
-    "keywords": "Interface IEditTool An interface to be implemented by edit tools that require an object to edit. Inherited Members IRunnable.isRunning IRunnable.StartRun() IRunnable.StopRun() IRunnable.ToggleRun() Namespace : XRC.Core Assembly : cs.temp.dll.dll Syntax public interface IEditTool : IRunnable Properties editObject The object to be edited by the tool. Declaration GameObject editObject { get; set; } Property Value Type Description GameObject"
-  },
-  "api/XRC.Core.IRunnable.html": {
-    "href": "api/XRC.Core.IRunnable.html",
-    "title": "Interface IRunnable | XRC Core",
-    "keywords": "Interface IRunnable Interface to be implemented by components, such as edit tools and interaction techniques, that have a distinct run condition. A run condition is where the tool, or technique, execute its primary tasks. Namespace : XRC.Core Assembly : cs.temp.dll.dll Syntax public interface IRunnable Remarks An example of a tool with a run condition is the XRC Color Tool, which is running when an object's color is being updated by the tool. Properties isRunning Whether the tool is running or not. Declaration bool isRunning { get; } Property Value Type Description Boolean Methods StartRun() Start running the tool. Declaration void StartRun() StopRun() End running the tool. Declaration void StopRun() ToggleRun() Toggle the tool. Declaration void ToggleRun()"
-  },
   "changelog/CHANGELOG.html": {
     "href": "changelog/CHANGELOG.html",
     "title": "Changelog | XRC Core",
