@@ -52,12 +52,6 @@ references:
   isSpec: "True"
   fullName: XRC.Core.EditObjectProvider.isRunning
   nameWithType: EditObjectProvider.isRunning
-- uid: XRC.Core.EditObjectProvider.objectSelected
-  name: objectSelected
-  href: api/XRC.Core.EditObjectProvider.html#XRC_Core_EditObjectProvider_objectSelected
-  commentId: E:XRC.Core.EditObjectProvider.objectSelected
-  fullName: XRC.Core.EditObjectProvider.objectSelected
-  nameWithType: EditObjectProvider.objectSelected
 - uid: XRC.Core.EditObjectProvider.StartRun
   name: StartRun()
   href: api/XRC.Core.EditObjectProvider.html#XRC_Core_EditObjectProvider_StartRun
