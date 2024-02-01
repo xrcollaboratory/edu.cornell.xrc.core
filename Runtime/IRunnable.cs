@@ -13,12 +13,6 @@ namespace XRC.Core
     {
         
         /// <summary>
-        /// Action that is invoked with the current running state.
-        /// </summary>
-        public event Action<bool> toggled;
-        
-        
-        /// <summary>
         /// Whether the tool is running or not.
         /// </summary>
         public bool isRunning { get;}
