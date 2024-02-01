@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -13,6 +11,7 @@ namespace XRC.Core
     /// <remarks>
     /// This component is used in edit tools that implement the <see cref="IEditTool"/> interface, such as
     /// XRC Mesh Tool, XRC Scale Tool, and XRC Color Tool, for providing the game object to be edited.
+    /// 
     /// </remarks>
     public class EditObjectProvider : MonoBehaviour 
     {
@@ -55,12 +54,20 @@ namespace XRC.Core
         }
 
         /// <summary>
-        /// The object being edited.
+        /// The object being edited. Anytime this property is set, the editObject of the EditTool is also set.
         /// </summary>
         public GameObject editObject
         {
             get => m_EditObject;
-            set => m_EditObject = value;
+            set
+            {
+                m_EditObject = value;
+                // Set the editObject of ScaleTool when this property is set
+                if (m_EditTool != null)
+                {
+                    m_EditTool.editObject = m_EditObject;
+                }
+            }
         }
 
         public bool isRunning
@@ -74,20 +81,33 @@ namespace XRC.Core
             m_EditTool = GetComponent<IEditTool>();
             m_SetEditObject.action.performed += _ => ToggleRun();
         }
-        
+
+        private void Update()
+        {
+            CheckObjectDestroyed();
+        }
+
+        // Handles cases when the SerializedObject of SerializedProperty has been Disposed while the tool is running. 
+        private void CheckObjectDestroyed()
+        {
+            if (!m_EditObject)
+            {
+                editObject = null; 
+                m_IsRunning = false;
+            }
+        }
+
         private void OnEnable()
         {
             m_SetEditObject.action.Enable();
             m_EditTool = GetComponent<IEditTool>();
             m_Interactor.selectEntered.AddListener(OnSelectEntered);
-            m_Interactor.selectExited.AddListener(OnSelectExited);
         }
         
         private void OnDisable()
         {
             m_SetEditObject.action.Disable();
             m_Interactor.selectEntered.RemoveListener(OnSelectEntered);
-            m_Interactor.selectExited.RemoveListener(OnSelectExited);
         }
         
         
@@ -103,8 +123,9 @@ namespace XRC.Core
                 m_Interactable = interactables[interactables.Count - 1];
                 
                 // Get the game object containing the selected interactable
-                m_EditObject = m_Interactable.transform.gameObject;
-
+                editObject = m_Interactable.transform.gameObject;
+                
+                
                 // Deselect the object and disable the interactable so it can't be selected while the object is a target object
                 m_Interactor.interactionManager.CancelInteractableSelection(m_Interactable);
                 
@@ -116,37 +137,37 @@ namespace XRC.Core
                     m_EditObject.transform.position = m_InitialPosition;
                     m_EditObject.transform.rotation = m_InitialRotation;
                 }
-                else
-                {
-                    m_EditTool.editObject = m_EditObject;
-                    if (m_StartEditOnSet)
-                    {
-                        m_EditTool.StartRun();
-                    }   
-                }
                 
+                if(m_EditTool == null)
+                {
+                    Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditTool is null");
+                    return;
+                }
+                if (m_StartEditOnSet)
+                {
+                    m_EditTool.StartRun();
+                }   
             }
             else
             {
                 if(m_EditTool == null)
                 {
                     Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditTool is null");
+                    return;
                 }
-                else
+                
+                if(m_EditObject == null)
                 {
-                    if(m_EditObject == null)
-                    {
-                        Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditObject is null");
-                        return; // FIXME
-                    }
-                    
-                    m_EditTool.editObject = m_EditObject;
-                    if (m_StartEditOnSet)
-                    {
-                        m_EditObject.GetComponent<XRGrabInteractable>().enabled = false;
-                        m_EditTool.StartRun();
-                    }
+                    Debug.LogWarning(this.name +"EditObjectProvider : ProvideEditObject : m_EditObject is null");
+                    return; 
                 }
+                    
+                if (m_StartEditOnSet)
+                {
+                    m_EditObject.GetComponent<XRGrabInteractable>().enabled = false;
+                    m_EditTool.StartRun();
+                }
+                
             }
         }
 
@@ -163,7 +184,6 @@ namespace XRC.Core
                 return;
             }
             m_EditObject.GetComponent<XRGrabInteractable>().enabled = true;
-            m_EditTool.editObject = m_EditObject;
             m_EditTool.StopRun();
         }
 
@@ -176,10 +196,6 @@ namespace XRC.Core
             objectSelected?.Invoke(interactable.transform.gameObject);
         }
         
-        private void OnSelectExited(SelectExitEventArgs arg0)
-        {
-            // m_EditObject = null;
-        }
         
         public void ToggleRun()
         {
