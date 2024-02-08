@@ -1,6 +1,6 @@
 {
 	"name": "edu.cornell.xrc.core",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"displayName": "XRC Core",
 	"description": "A collection of core utility scripts and starter assets to be used by XR Collaboratory.",
 	"unity": "2022.3",
