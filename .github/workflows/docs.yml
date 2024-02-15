@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - core/sr-features
       - solution
 
 jobs:
