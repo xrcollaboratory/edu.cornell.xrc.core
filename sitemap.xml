@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.EditObjectProvider.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.IEditTool.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.IRunnable.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/api/XRC.Core.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/changelog/CHANGELOG.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/index.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/license/LICENSE.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://xrcollaboratory.github.io/edu.cornell.xrc.core/license/Third%20Party%20Notices.html</loc>
-    <lastmod>2024-02-15T08:32:54+00:00</lastmod>
+    <lastmod>2024-02-15T09:31:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
